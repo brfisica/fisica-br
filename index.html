@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física BR · Física interactiva para ingeniería — ECI</title>
+<style>
+  :root{
+    --tinta:#1a1f2e;        /* azul-tinta profundo */
+    --papel:#f6f4ef;        /* papel cálido */
+    --papel-2:#fffdf8;      /* tarjeta */
+    --linea:#d9d4c8;        /* hairline */
+    --acento:#0f6e56;       /* verde teal (electricidad/campo) */
+    --acento-2:#b8451f;     /* ladrillo (mecánica/energía) */
+    --tenue:#6a6559;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--papel);color:var(--tinta);
+    font-family:"Iowan Old Style",Georgia,"Times New Roman",serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .contenedor{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* Encabezado */
+  header{border-bottom:2px solid var(--tinta);padding:48px 0 28px}
+  .marca{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+  .logo-br{
+    width:60px;height:60px;background:var(--tinta);border-radius:14px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:24px;font-weight:700;
+    color:var(--papel);letter-spacing:-1px;
+  }
+  .marca-nombre{font-size:clamp(30px,5vw,44px);line-height:1;font-weight:700;letter-spacing:-.01em}
+  .acento-verde{color:var(--acento)}
+  .marca-bajada{
+    font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--tenue);margin-top:8px;font-weight:600;
+  }
+  .sub{margin-top:16px;font-size:18px;color:var(--tenue);max-width:60ch}
+  .meta{
+    margin-top:22px;display:flex;gap:28px;flex-wrap:wrap;
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;color:var(--tenue);
+  }
+  .meta b{color:var(--tinta);font-weight:600}
+
+  /* Curso */
+  .curso{margin:52px 0}
+  .curso-cab{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .curso-num{
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;
+    color:var(--papel);background:var(--acento);padding:3px 9px;border-radius:4px;font-weight:600;
+  }
+  .curso.mec .curso-num{background:var(--acento-2)}
+  .curso h2{font-size:26px;font-weight:700;letter-spacing:-.01em}
+  .curso-desc{color:var(--tenue);font-size:15px;margin:2px 0 22px}
+
+  /* Rejilla de talleres */
+  .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .taller{
+    background:var(--papel-2);border:1px solid var(--linea);border-radius:12px;
+    padding:20px;display:flex;flex-direction:column;gap:10px;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+  }
+  .taller:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,31,46,.09);border-color:var(--acento)}
+  .curso.mec .taller:hover{border-color:var(--acento-2)}
+  .cap{
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--tenue);font-weight:600;
+  }
+  .taller h3{font-size:19px;font-weight:700;line-height:1.25}
+  .taller p{font-size:14px;color:var(--tenue);flex:1}
+  .puntos{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--tenue)}
+  .abrir{
+    align-self:flex-start;margin-top:6px;display:inline-flex;align-items:center;gap:7px;
+    background:var(--tinta);color:var(--papel);text-decoration:none;
+    padding:9px 16px;border-radius:7px;font-family:"SF Mono",ui-monospace,Menlo,monospace;
+    font-size:13px;font-weight:600;transition:background .15s ease;
+  }
+  .abrir:hover{background:var(--acento)}
+  .curso.mec .abrir:hover{background:var(--acento-2)}
+  .abrir::after{content:"→"}
+
+  /* Tarjeta "próximamente" */
+  .taller.pronto{border-style:dashed;background:transparent;justify-content:center;align-items:center;text-align:center;color:var(--tenue);min-height:150px}
+  .taller.pronto .cap{color:var(--tenue)}
+
+  /* Nota sobre primera carga */
+  .aviso{
+    background:var(--papel-2);border:1px solid var(--linea);border-left:3px solid var(--acento);
+    border-radius:0 8px 8px 0;padding:14px 18px;margin:8px 0 0;font-size:14px;color:var(--tenue);
+  }
+
+  .ecosistema{
+    background:var(--papel-2);border:1px solid var(--linea);border-left:3px solid var(--acento-2);
+    border-radius:0 8px 8px 0;padding:14px 18px;margin:14px 0 0;font-size:14px;color:var(--tenue);
+  }
+  .ecosistema b{color:var(--tinta)}
+
+  footer{border-top:2px solid var(--tinta);margin-top:60px;padding:28px 0 50px;font-size:13px;color:var(--tenue)}
+  footer b{color:var(--tinta)}
+  footer a{color:var(--acento);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .foot-marca{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .logo-br-mini{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;background:var(--tinta);color:var(--papel);border-radius:6px;
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;letter-spacing:-.5px;
+  }
+  .lic{margin-top:10px;font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <div class="contenedor">
+    <div class="marca">
+      <div class="logo-br">BR</div>
+      <div>
+        <div class="marca-nombre">Física <span class="acento-verde">BR</span></div>
+        <div class="marca-bajada">Física interactiva para ingeniería</div>
+      </div>
+    </div>
+    <p class="sub">Simulaciones para experimentar con los conceptos: mueve los parámetros, observa el campo o la trayectoria, predice el resultado y comprueba tu respuesta.</p>
+    <div class="meta">
+      <span><b id="n-talleres">4</b> talleres</span>
+      <span><b>2</b> cursos</span>
+      <span>Sin cuenta · Abre en el navegador</span>
+    </div>
+  </div>
+</header>
+
+<main class="contenedor">
+
+  <!-- CURSO: Electricidad y Magnetismo -->
+  <section class="curso elec">
+    <div class="curso-cab">
+      <span class="curso-num">FÍS · E&M</span>
+      <h2>Electricidad y Magnetismo</h2>
+    </div>
+    <p class="curso-desc">Campos, potencial y aplicaciones en ingeniería eléctrica, electrónica y civil.</p>
+    <div class="rejilla">
+
+      <article class="taller">
+        <span class="cap">Cap. — Ley de Gauss</span>
+        <h3>Ley de Gauss</h3>
+        <p>Flujo y campo en esferas, cilindros, líneas de carga y láminas. Aplicaciones: sensores, RETIE, blindaje.</p>
+        <span class="puntos">6 puntos · esquema + sliders + quiz</span>
+        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Ley_de_Gauss_Interactivo_v2+%281%29.ipynb">Abrir taller</a>
+      </article>
+
+      <article class="taller">
+        <span class="cap">Cap. — Potencial</span>
+        <h3>Potencial Eléctrico</h3>
+        <p>Potencial de cargas, dipolos, capacitores y anillos. Aplicaciones: terminales, electrodos, lentes electrostáticas.</p>
+        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
+        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Potencial_Electrico.ipynb">Abrir taller</a>
+      </article>
+
+      <article class="taller pronto">
+        <span class="cap">Próximamente</span>
+        <p>Los siguientes capítulos se irán agregando aquí semana a semana.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CURSO: Física Mecánica -->
+  <section class="curso mec">
+    <div class="curso-cab">
+      <span class="curso-num">FÍS · MEC</span>
+      <h2>Física Mecánica</h2>
+    </div>
+    <p class="curso-desc">Cinemática y dinámica con contextos de ingeniería colombiana. g = 9,80 m/s².</p>
+    <div class="rejilla">
+
+      <article class="taller">
+        <span class="cap">Cap. 5 — Movimiento 2D</span>
+        <h3>Movimiento de Proyectiles</h3>
+        <p>Lanzamiento con ángulo, tiro horizontal, ángulo óptimo y estado en un instante. Drones, logística, trayectorias.</p>
+        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
+        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Proyectiles.ipynb">Abrir taller</a>
+      </article>
+
+      <article class="taller">
+        <span class="cap">Cap. 4 — MRUA</span>
+        <h3>Movimiento bajo la Gravedad</h3>
+        <p>Caída libre, tiro vertical y comparaciones. Contextos: obra, refinería, edificios. Verificación v²=2gh.</p>
+        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
+        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Caida_Libre.ipynb">Abrir taller</a>
+      </article>
+
+      <article class="taller pronto">
+        <span class="cap">Próximamente</span>
+        <p>Un taller por capítulo, al ritmo del curso.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="aviso">
+    <b>Nota para estudiantes:</b> la primera vez que abras un taller puede tardar 1–2 minutos en cargar mientras se prepara el entorno. Después va fluido. No necesitas cuenta ni instalar nada.
+  </div>
+
+  <div class="ecosistema">
+    <b>Ecosistema BR:</b> los libros <i>Física para Ingeniería</i> (Betancur-Rojas), los talleres Física BR y esta suite web comparten el mismo sello de autor.
+  </div>
+
+</main>
+
+<footer>
+  <div class="contenedor">
+    <div class="foot-marca"><span class="logo-br-mini">BR</span> <b>Física BR</b> · Física interactiva para ingeniería</div>
+    <div>Juan David Betancur Ríos · Nora Yamile Rojas Cataño — Departamento de Ciencias Naturales</div>
+    <div>Escuela Colombiana de Ingeniería Julio Garavito · Bogotá, 2026</div>
+    <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
