@@ -1,4 +1,4 @@
-# Talleres Interactivos de Física — ECI
+# Talleres Interactivos de Física
 
 Simulaciones interactivas para los cursos de Física de la
 **Escuela Colombiana de Ingeniería Julio Garavito**.
