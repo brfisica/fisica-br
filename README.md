@@ -1,7 +1,6 @@
 # Talleres Interactivos de Física
 
-Simulaciones interactivas para los cursos de Física de la
-**Escuela Colombiana de Ingeniería Julio Garavito**.
+Simulaciones interactivas para los cursos de Física
 
 **Autores:** Juan David Betancur Ríos · Nora Yamile Rojas Cataño
 **Semestre:** 2026-2
