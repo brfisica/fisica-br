@@ -14,10 +14,10 @@ nada ni requerir cuenta.
 
 | Taller | Curso | Enlace (Binder) |
 |--------|-------|-----------------|
-| Ley de Gauss | Electricidad y Magnetismo | [Abrir](https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Ley_de_Gauss_Interactivo_v2+%281%29.ipynb) |
-| Potencial Eléctrico | Electricidad y Magnetismo | [Abrir](https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Potencial_Electrico.ipynb) |
-| Movimiento de Proyectiles | Física Mecánica | [Abrir](https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Proyectiles.ipynb) |
-| Movimiento bajo la Gravedad | Física Mecánica | [Abrir](https://mybinder.org/v2/gh/dbetan2005-web/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Caida_Libre.ipynb) |
+| Ley de Gauss | Electricidad y Magnetismo | [Abrir](https://mybinder.org/v2/gh/brfisica/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Ley_de_Gauss_Interactivo_v2+%281%29.ipynb) |
+| Potencial Eléctrico | Electricidad y Magnetismo | [Abrir](https://mybinder.org/v2/gh/brfisica/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Potencial_Electrico.ipynb) |
+| Movimiento de Proyectiles | Física Mecánica | [Abrir](https://mybinder.org/v2/gh/brfisica/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Proyectiles.ipynb) |
+| Movimiento bajo la Gravedad | Física Mecánica | [Abrir](https://mybinder.org/v2/gh/brfisica/Ley-de-Gauss/HEAD?urlpath=voila%2Frender%2FTaller_Caida_Libre.ipynb) |
 
 > La primera carga puede tardar 1–2 minutos mientras Binder construye el entorno.
 
