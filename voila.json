@@ -1,0 +1,12 @@
+{
+  "Voila": {
+    "tornado_settings": {
+      "page_title": "Física BR · Física interactiva para ingeniería"
+    }
+  },
+  "VoilaConfiguration": {
+    "template_options": {
+      "title": "Física BR"
+    }
+  }
+}
