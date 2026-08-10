@@ -2,7 +2,7 @@
 
 Simulaciones interactivas para los cursos de Física
 
-**Autores:** Juan David Betancur Ríos
+**Autor:** Juan David Betancur Ríos
 **Fecha: ** julio 2026
 
 Cada taller es un cuaderno interactivo (Jupyter/Voilà) con esquemas del dispositivo,
