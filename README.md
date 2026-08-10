@@ -23,7 +23,7 @@ nada ni requerir cuenta.
 
 ## Licencia
 
-© 2026 Juan David Betancur Ríos.
+© julio 2026 Juan David Betancur Ríos.
 
 Este material está licenciado bajo
 **Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
