@@ -83,6 +83,21 @@
   .curso.mec .abrir:hover{background:var(--acento-2)}
   .abrir::after{content:"→"}
 
+  /* Tarjeta de taller APLICADO (destacada) */
+  .taller.aplicada{
+    background:linear-gradient(135deg,#fffaf0,#fff6e6);
+    border:2px solid #d9a441;
+    box-shadow:0 4px 14px rgba(217,164,65,.15);
+  }
+  .taller.aplicada:hover{border-color:#c8901f;box-shadow:0 8px 24px rgba(217,164,65,.25)}
+  .taller.aplicada .cap{
+    color:#b8791a;font-weight:700;
+    background:#fdefd0;padding:3px 9px;border-radius:5px;align-self:flex-start;
+  }
+  .taller.aplicada h3{font-size:21px;font-weight:800;color:var(--tinta)}
+  .taller.aplicada .abrir{background:#c8901f}
+  .taller.aplicada .abrir:hover{background:#a8760f}
+
   /* Tarjeta "próximamente" */
   .taller.pronto{border-style:dashed;background:transparent;justify-content:center;align-items:center;text-align:center;color:var(--tenue);min-height:150px}
   .taller.pronto .cap{color:var(--tenue)}
@@ -128,7 +143,7 @@
       <b>Nota para estudiantes:</b> la primera vez que abras un taller puede tardar 1–2 minutos en cargar mientras se prepara el entorno ejecutable. Después funciona de forma fluida. Acceso libre sin necesidad de crear cuenta ni instalar software.
     </div>
     <div class="meta">
-      <span><b id="n-talleres">21</b> talleres interactivos</span>
+      <span><b id="n-talleres">22</b> talleres interactivos</span>
       <span><b>2</b> cursos integrados</span>
       <span>Ejecución en la nube · Sin cuenta</span>
     </div>
@@ -161,7 +176,7 @@
         <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">Abrir taller</a>
       </article>
 
-      <article class="taller">
+      <article class="taller aplicada">
         <span class="cap">Aplicación — MRU</span>
         <h3>MRU y Ondas Sísmicas</h3>
         <p>Alerta sísmica temprana, onda P vs onda S, localización del epicentro, ventana de aviso y velocidad promedio por capas. Aplicación con contexto colombiano (redes del SGC).</p>
@@ -256,6 +271,14 @@
         <p>Carga cuantizada, ley de Coulomb, superposición de fuerzas y campo eléctrico de cargas puntuales. Base de todo el curso.</p>
         <span class="puntos">5 puntos · esquema + sliders + quiz</span>
         <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">Abrir taller</a>
+      </article>
+
+      <article class="taller aplicada">
+        <span class="cap">Aplicación — Campo Eléctrico</span>
+        <h3>Campo Eléctrico y Cinemática de Cargas</h3>
+        <p>Dos cables cargados: campo por superposición, aceleración de un ión Na⁺, integración a·dx=v·dv, y análisis del error de suponer campo constante (37%). Nivel avanzado con cálculo integral.</p>
+        <span class="puntos">3 puntos · esquema + sliders + quiz</span>
+        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">Abrir taller</a>
       </article>
 
       <article class="taller">
