@@ -65,17 +65,6 @@
   .guia summary:hover h3{color:var(--acento)}
   .guia[open] summary{margin-bottom:16px}
   .guia summary .pista{font-size:13px;color:var(--tenue);font-weight:400;margin-left:auto}
-
-  /* ===== Layout de dos columnas (talleres + guía lateral) ===== */
-  .layout-cols{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start}
-  .col-guia{position:sticky;top:20px}
-  .guia-lateral{margin:0}
-  .guia-lateral .guia-items{grid-template-columns:1fr}
-  .guia-lateral summary h3{font-size:16px}
-  /* En pantallas medianas/móvil: una sola columna, guía arriba y colapsada */
-  @media(max-width:900px){
-    .layout-cols{grid-template-columns:1fr}
-    .col-guia{position:static;order:-1;margin-bottom:8px}
   }
   .guia-items{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
   @media(max-width:640px){.guia-items{grid-template-columns:1fr}}
@@ -265,9 +254,24 @@
 
 
 
-  <div class="layout-cols">
-      <div class="col-talleres">
-<section class="curso mec" id="mecanica">
+  <details class="guia">
+        <summary><h3>Cómo usar los talleres</h3><span class="pista">toca para ver</span></summary>
+        <div class="guia-items">
+          <div class="guia-item"><span class="guia-icono">⏳</span><div>La <b>primera vez</b> que abres un taller, tarda 1–2 minutos en preparar el entorno. Después es rápido.</div></div>
+          <div class="guia-item"><span class="guia-icono">🎚️</span><div>Mueve los <b>deslizadores (sliders)</b> para cambiar los parámetros y ver la física en tiempo real.</div></div>
+          <div class="guia-item"><span class="guia-icono">📐</span><div>Cada punto tiene un <b>esquema conceptual</b> que explica el "porqué" físico, no solo el resultado.</div></div>
+          <div class="guia-item"><span class="guia-icono">✅</span><div>Los <b>cuestionarios</b> dan una nota formativa de 0,0 a 5,0. Puedes <b>reintentar</b> las veces que quieras.</div></div>
+          <div class="guia-item"><span class="guia-icono">🔧</span><div>Cada punto incluye una <b>aplicación en ingeniería</b> con contexto colombiano real.</div></div>
+          <div class="guia-item"><span class="guia-icono">🖱️</span><div>Pulsa <b>"Mostrar solución"</b> para ver el desarrollo paso a paso cuando lo necesites.</div></div>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--linea);font-size:13px;color:var(--tenue)">
+          <b style="color:var(--tinta)">Etiquetas:</b><br>
+          <span class="etq dif">★</span> básico &nbsp; <span class="etq dif">★★</span> intermedio &nbsp; <span class="etq dif">★★★</span> avanzado<br>
+          <span class="etq" style="margin-top:6px;display:inline-block">Aplicación</span> taller de caso real con contexto de ingeniería
+        </div>
+      </details>
+
+    <section class="curso mec" id="mecanica">
     <div class="curso-cab">
       <span class="curso-num">FÍS · MEC</span>
       <h2>Física Mecánica</h2>
@@ -475,26 +479,6 @@
 
     </div>
   </section>
-      </div>
-      <aside class="col-guia">
-        <details class="guia guia-lateral">
-        <summary><h3>Cómo usar los talleres</h3></summary>
-        <div class="guia-items">
-          <div class="guia-item"><span class="guia-icono">⏳</span><div>La <b>primera vez</b> que abres un taller, tarda 1–2 minutos en preparar el entorno. Después es rápido.</div></div>
-          <div class="guia-item"><span class="guia-icono">🎚️</span><div>Mueve los <b>deslizadores (sliders)</b> para cambiar los parámetros y ver la física en tiempo real.</div></div>
-          <div class="guia-item"><span class="guia-icono">📐</span><div>Cada punto tiene un <b>esquema conceptual</b> que explica el "porqué" físico, no solo el resultado.</div></div>
-          <div class="guia-item"><span class="guia-icono">✅</span><div>Los <b>cuestionarios</b> dan una nota formativa de 0,0 a 5,0. Puedes <b>reintentar</b> las veces que quieras.</div></div>
-          <div class="guia-item"><span class="guia-icono">🔧</span><div>Cada punto incluye una <b>aplicación en ingeniería</b> con contexto colombiano real.</div></div>
-          <div class="guia-item"><span class="guia-icono">🖱️</span><div>Pulsa <b>"Mostrar solución"</b> para ver el desarrollo paso a paso cuando lo necesites.</div></div>
-        </div>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--linea);font-size:13px;color:var(--tenue)">
-          <b style="color:var(--tinta)">Etiquetas:</b><br>
-          <span class="etq dif">★</span> básico &nbsp; <span class="etq dif">★★</span> intermedio &nbsp; <span class="etq dif">★★★</span> avanzado<br>
-          <span class="etq" style="margin-top:6px;display:inline-block">Aplicación</span> taller de caso real con contexto de ingeniería
-        </div>
-      </details>
-      </aside>
-    </div>
   </main>
 
 <footer>
