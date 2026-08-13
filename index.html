@@ -14,6 +14,67 @@
     --acento-2:#b8451f;     /* ladrillo (mecánica/energía) */
     --tenue:#6a6559;
   }
+
+  /* ===== Modo oscuro ===== */
+  body.oscuro{
+    --tinta:#e8e6e0; --papel:#15171e; --papel-2:#1e2129; --linea:#333844;
+    --acento:#2dd4a7; --acento-2:#ff7a4d; --tenue:#9a958a;
+  }
+  body{transition:background .3s,color .3s}
+
+  /* ===== Barra de herramientas (buscador + tema) ===== */
+  .barra-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:22px 0 8px}
+  .buscador{flex:1;min-width:200px;position:relative}
+  .buscador input{
+    width:100%;padding:11px 14px 11px 38px;border:1px solid var(--linea);
+    border-radius:9px;background:var(--papel-2);color:var(--tinta);font-size:15px;
+    font-family:inherit;box-sizing:border-box;
+  }
+  .buscador input:focus{outline:none;border-color:var(--acento)}
+  .buscador::before{content:"⌕";position:absolute;left:13px;top:50%;transform:translateY(-50%);
+    font-size:18px;color:var(--tenue)}
+  .btn-tema{
+    padding:11px 16px;border:1px solid var(--linea);border-radius:9px;
+    background:var(--papel-2);color:var(--tinta);cursor:pointer;font-size:14px;
+    font-family:inherit;white-space:nowrap;transition:border-color .2s;
+  }
+  .btn-tema:hover{border-color:var(--acento)}
+  .sin-resultados{text-align:center;color:var(--tenue);padding:30px;font-style:italic;display:none}
+
+  /* ===== Índice de salto ===== */
+  .indice{
+    background:var(--papel-2);border:1px solid var(--linea);border-radius:12px;
+    padding:16px 20px;margin:18px 0;
+  }
+  .indice h4{margin:0 0 10px;font-size:14px;color:var(--tenue);text-transform:uppercase;letter-spacing:.5px}
+  .indice-cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+  @media(max-width:640px){.indice-cols{grid-template-columns:1fr}}
+  .indice a{color:var(--acento);text-decoration:none;font-size:14px;padding:3px 0;display:block;transition:padding-left .15s}
+  .indice a:hover{padding-left:5px;text-decoration:underline}
+
+  /* ===== Guía "cómo usar" ===== */
+  .guia{
+    background:linear-gradient(135deg,var(--papel-2),transparent);
+    border:1px solid var(--linea);border-radius:12px;padding:22px 24px;margin:18px 0;
+  }
+  .guia h3{margin:0 0 14px;font-size:18px;color:var(--tinta)}
+  .guia-items{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+  @media(max-width:640px){.guia-items{grid-template-columns:1fr}}
+  .guia-item{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--tenue);line-height:1.5}
+  .guia-item b{color:var(--tinta)}
+  .guia-icono{font-size:18px;flex-shrink:0;line-height:1.3}
+  .etq{display:inline-block;padding:1px 7px;border-radius:4px;font-size:12px;font-weight:600;
+    background:var(--acento);color:#fff}
+  .etq.dif{background:#d9a441;color:#1a1f2e}
+
+  /* ===== Pie de página ===== */
+  footer.pie{
+    border-top:2px solid var(--linea);margin-top:60px;padding:32px 0;
+    color:var(--tenue);font-size:14px;line-height:1.7;text-align:center;
+  }
+  footer.pie b{color:var(--tinta)}
+  footer.pie .pie-marca{font-size:16px;color:var(--acento);font-weight:700;margin-bottom:6px}
+
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -151,8 +212,44 @@
 </header>
 
 <main class="contenedor">
+    <!-- Barra de herramientas: buscador + modo oscuro -->
+    <div class="barra-tools">
+      <div class="buscador">
+        <input type="text" id="busca" placeholder="Buscar taller por tema, título o palabra clave…" oninput="filtrar()">
+      </div>
+      <button class="btn-tema" onclick="alternarTema()" id="btn-tema">🌙 Modo oscuro</button>
+    </div>
+    <p class="sin-resultados" id="sin-res">No se encontraron talleres con ese término.</p>
 
-  <section class="curso mec">
+    <!-- Índice de salto -->
+    <nav class="indice">
+      <h4>Ir directo a</h4>
+      <div class="indice-cols">
+        <a href="#mecanica">⚙️ Física Mecánica (11 talleres)</a>
+        <a href="#electricidad">⚡ Electricidad y Magnetismo (11 talleres)</a>
+      </div>
+    </nav>
+
+    <!-- Guía: cómo usar los talleres -->
+    <div class="guia">
+      <h3>Cómo usar los talleres</h3>
+      <div class="guia-items">
+        <div class="guia-item"><span class="guia-icono">⏳</span><div>La <b>primera vez</b> que abres un taller, tarda 1–2 minutos en preparar el entorno. Después es rápido.</div></div>
+        <div class="guia-item"><span class="guia-icono">🎚️</span><div>Mueve los <b>deslizadores (sliders)</b> para cambiar los parámetros y ver la física en tiempo real.</div></div>
+        <div class="guia-item"><span class="guia-icono">📐</span><div>Cada punto tiene un <b>esquema conceptual</b> que explica el "porqué" físico, no solo el resultado.</div></div>
+        <div class="guia-item"><span class="guia-icono">✅</span><div>Los <b>cuestionarios</b> dan una nota formativa de 0,0 a 5,0. Puedes <b>reintentar</b> las veces que quieras.</div></div>
+        <div class="guia-item"><span class="guia-icono">🔧</span><div>Cada punto incluye una <b>aplicación en ingeniería</b> con contexto colombiano real.</div></div>
+        <div class="guia-item"><span class="guia-icono">🖱️</span><div>Pulsa <b>"Mostrar solución"</b> para ver el desarrollo paso a paso cuando lo necesites.</div></div>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--linea);font-size:13px;color:var(--tenue)">
+        <b style="color:var(--tinta)">Etiquetas que verás:</b>
+        &nbsp; <span class="etq dif">★</span> básico &nbsp; <span class="etq dif">★★</span> intermedio &nbsp; <span class="etq dif">★★★</span> avanzado
+        &nbsp;·&nbsp; <span class="etq">Aplicación</span> taller de caso real, con contexto de ingeniería
+      </div>
+    </div>
+
+
+  <section class="curso mec" id="mecanica" id="electricidad">
     <div class="curso-cab">
       <span class="curso-num">FÍS · MEC</span>
       <h2>Física Mecánica</h2>
@@ -367,10 +464,47 @@
   <div class="contenedor">
     <div class="foot-marca"><span class="logo-br-mini">BR</span> <b>Física BR</b> · Simulaciones y física interactiva para ingeniería</div>
     <div>Juan David Betancur Ríos · docente de física para ingeniería</div>
-    <div>Bogotá, 2026</div>
+    <div>Bogotá, Colombia · Proyecto iniciado en julio de 2026</div>
     <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a></div>
   </div>
 </footer>
+
+
+<script>
+// ===== Buscador / filtro de talleres =====
+function filtrar(){
+  var q=document.getElementById('busca').value.toLowerCase().trim();
+  var tarjetas=document.querySelectorAll('article.taller:not(.pronto)');
+  var visibles=0;
+  tarjetas.forEach(function(t){
+    var texto=t.textContent.toLowerCase();
+    var coincide=texto.indexOf(q)!==-1;
+    t.style.display=coincide?'':'none';
+    if(coincide) visibles++;
+  });
+  // mostrar/ocultar secciones vacías y las tarjetas "curso completo"
+  document.querySelectorAll('article.taller.pronto').forEach(function(t){
+    t.style.display=q===''?'':'none';
+  });
+  document.getElementById('sin-res').style.display=(visibles===0&&q!=='')?'block':'none';
+}
+
+// ===== Modo oscuro =====
+function alternarTema(){
+  document.body.classList.toggle('oscuro');
+  var osc=document.body.classList.contains('oscuro');
+  var btn=document.getElementById('btn-tema');
+  btn.textContent=osc?'☀️ Modo claro':'🌙 Modo oscuro';
+  try{ localStorage.setItem('tema-br', osc?'oscuro':'claro'); }catch(e){}
+}
+// recordar preferencia
+try{
+  if(localStorage.getItem('tema-br')==='oscuro'){
+    document.body.classList.add('oscuro');
+    document.getElementById('btn-tema').textContent='☀️ Modo claro';
+  }
+}catch(e){}
+</script>
 
 </body>
 </html>
