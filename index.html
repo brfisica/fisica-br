@@ -57,7 +57,14 @@
     background:linear-gradient(135deg,var(--papel-2),transparent);
     border:1px solid var(--linea);border-radius:12px;padding:22px 24px;margin:18px 0;
   }
-  .guia h3{margin:0 0 14px;font-size:18px;color:var(--tinta)}
+  .guia h3{margin:0;font-size:18px;color:var(--tinta);display:inline}
+  .guia summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;user-select:none}
+  .guia summary::-webkit-details-marker{display:none}
+  .guia summary::before{content:"▸";color:var(--acento);font-size:15px;transition:transform .2s}
+  .guia[open] summary::before{transform:rotate(90deg)}
+  .guia summary:hover h3{color:var(--acento)}
+  .guia[open] summary{margin-bottom:16px}
+  .guia summary .pista{font-size:13px;color:var(--tenue);font-weight:400;margin-left:auto}
   .guia-items{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
   @media(max-width:640px){.guia-items{grid-template-columns:1fr}}
   .guia-item{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--tenue);line-height:1.5}
@@ -159,6 +166,18 @@
   .taller.aplicada .abrir{background:#c8901f}
   .taller.aplicada .abrir:hover{background:#a8760f}
 
+  /* Tarjetas de aplicación en MODO OSCURO (dorado oscuro, texto claro) */
+  body.oscuro .taller.aplicada{
+    background:linear-gradient(135deg,#2a2410,#211d0e);
+    border-color:#8a6d1f;
+    box-shadow:0 4px 14px rgba(217,164,65,.10);
+  }
+  body.oscuro .taller.aplicada:hover{border-color:#d9a441;box-shadow:0 8px 24px rgba(217,164,65,.20)}
+  body.oscuro .taller.aplicada .cap{background:#3d3416;color:#e8c874}
+  body.oscuro .taller.aplicada h3{color:#f0ead8}
+  body.oscuro .taller.aplicada p{color:#c9c2ad}
+  body.oscuro .taller.aplicada .puntos{color:#a89a6f}
+
   /* Tarjeta "próximamente" */
   .taller.pronto{border-style:dashed;background:transparent;justify-content:center;align-items:center;text-align:center;color:var(--tenue);min-height:150px}
   .taller.pronto .cap{color:var(--tenue)}
@@ -231,8 +250,8 @@
     </nav>
 
     <!-- Guía: cómo usar los talleres -->
-    <div class="guia">
-      <h3>Cómo usar los talleres</h3>
+    <details class="guia">
+      <summary><h3>Cómo usar los talleres</h3><span class="pista">toca para ver</span></summary>
       <div class="guia-items">
         <div class="guia-item"><span class="guia-icono">⏳</span><div>La <b>primera vez</b> que abres un taller, tarda 1–2 minutos en preparar el entorno. Después es rápido.</div></div>
         <div class="guia-item"><span class="guia-icono">🎚️</span><div>Mueve los <b>deslizadores (sliders)</b> para cambiar los parámetros y ver la física en tiempo real.</div></div>
@@ -246,7 +265,7 @@
         &nbsp; <span class="etq dif">★</span> básico &nbsp; <span class="etq dif">★★</span> intermedio &nbsp; <span class="etq dif">★★★</span> avanzado
         &nbsp;·&nbsp; <span class="etq">Aplicación</span> taller de caso real, con contexto de ingeniería
       </div>
-    </div>
+    </details>
 
 
   <section class="curso mec" id="mecanica" id="electricidad">
@@ -472,12 +491,16 @@
 
 <script>
 // ===== Buscador / filtro de talleres =====
+function _norm(s){
+  // quita tildes y pasa a minúsculas para búsqueda flexible
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
 function filtrar(){
-  var q=document.getElementById('busca').value.toLowerCase().trim();
+  var q=_norm(document.getElementById('busca').value.trim());
   var tarjetas=document.querySelectorAll('article.taller:not(.pronto)');
   var visibles=0;
   tarjetas.forEach(function(t){
-    var texto=t.textContent.toLowerCase();
+    var texto=_norm(t.textContent);
     var coincide=texto.indexOf(q)!==-1;
     t.style.display=coincide?'':'none';
     if(coincide) visibles++;
@@ -487,6 +510,13 @@ function filtrar(){
     t.style.display=q===''?'':'none';
   });
   document.getElementById('sin-res').style.display=(visibles===0&&q!=='')?'block':'none';
+  // al empezar a buscar, desplazar suavemente hasta los resultados
+  if(q.length>=2 && !window._yaSalto){
+    var destino=document.getElementById('mecanica');
+    if(destino){ destino.scrollIntoView({behavior:'smooth',block:'start'}); }
+    window._yaSalto=true;
+  }
+  if(q.length===0){ window._yaSalto=false; }
 }
 
 // ===== Modo oscuro =====
