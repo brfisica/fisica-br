@@ -158,6 +158,13 @@
     border:2px solid #d9a441;
     box-shadow:0 4px 14px rgba(217,164,65,.15);
   }
+
+  .taller.repaso{
+    background:linear-gradient(135deg,#eef2fb,#e6ecfb);
+    border:2px solid #4a6fd4;
+    box-shadow:0 4px 14px rgba(74,111,212,.15)
+  }
+  .taller.repaso .cap{color:#3a5bc0}
   .taller.aplicada:hover{border-color:#c8901f;box-shadow:0 8px 24px rgba(217,164,65,.25)}
   .taller.aplicada .cap{
     color:#b8791a;font-weight:700;
@@ -173,6 +180,11 @@
     border-color:#8a6d1f;
     box-shadow:0 4px 14px rgba(217,164,65,.10);
   }
+  body.oscuro .taller.repaso{
+    background:linear-gradient(135deg,#1a1f33,#181d2e);
+    border-color:#4a6fd4
+  }
+  body.oscuro .taller.repaso .cap{color:#8ba3e8}
   body.oscuro .taller.aplicada:hover{border-color:#d9a441;box-shadow:0 8px 24px rgba(217,164,65,.20)}
   body.oscuro .taller.aplicada .cap{background:#3d3416;color:#e8c874}
   body.oscuro .taller.aplicada h3{color:#f0ead8}
@@ -387,7 +399,7 @@
         <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fluidos.ipynb">Abrir taller</a>
       </article>
 
-      <article class="taller">
+      <article class="taller repaso">
         <span class="cap">Repaso — Cinemática 1D</span>
         <h3>Conversión de Unidades y Cinemática 1D</h3>
         <p>Conversión imperial→SI (tuberías), análisis de gráficas v-t (aceleración, desplazamiento vs distancia) y MRUA aplicado al tejo colombiano. Ideal como quiz de repaso.</p>
