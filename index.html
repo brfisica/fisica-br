@@ -65,7 +65,6 @@
   .guia summary:hover h3{color:var(--acento)}
   .guia[open] summary{margin-bottom:16px}
   .guia summary .pista{font-size:13px;color:var(--tenue);font-weight:400;margin-left:auto}
-  }
   .guia-items{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
   @media(max-width:640px){.guia-items{grid-template-columns:1fr}}
   .guia-item{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--tenue);line-height:1.5}
@@ -219,6 +218,60 @@
     font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;letter-spacing:-.5px;
   }
   .lic{margin-top:10px;font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px}
+
+  /* ===== Sección "Empieza aquí" ===== */
+  .empieza{margin:26px 0 8px}
+  .empieza-cab{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .empieza-cab h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .empieza-cab .pin{
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;
+    color:var(--papel);background:var(--tinta);padding:3px 9px;border-radius:4px;font-weight:600;
+  }
+  .empieza-desc{color:var(--tenue);font-size:14px;margin:0 0 16px}
+  .rec-rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+  .rec{
+    background:var(--papel-2);border:1px solid var(--linea);border-radius:11px;
+    padding:15px 16px;display:flex;flex-direction:column;gap:7px;text-decoration:none;color:inherit;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+  }
+  .rec:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(26,31,46,.10);border-color:var(--acento)}
+  .rec .rec-orden{
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--acento);font-weight:700;
+  }
+  .rec h4{font-size:16px;font-weight:700;line-height:1.25;color:var(--tinta)}
+  .rec .rec-nota{font-size:13px;color:var(--tenue);flex:1;line-height:1.45}
+  .rec .rec-ir{
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;font-weight:600;color:var(--acento);
+    margin-top:2px;
+  }
+  .rec .rec-ir::after{content:" →"}
+
+  /* ===== Badge de tipo en cada card ===== */
+  .badge-tipo{
+    display:inline-block;align-self:flex-start;font-family:"SF Mono",ui-monospace,Menlo,monospace;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+    padding:2px 8px;border-radius:4px;margin-bottom:2px;
+  }
+  .badge-tipo.t-aplicada{background:#fdefd0;color:#b8791a}
+  .badge-tipo.t-repaso{background:#e6ecfb;color:#3a5bc0}
+  .badge-tipo.t-teorico{background:var(--papel);color:var(--tenue);border:1px solid var(--linea)}
+  body.oscuro .badge-tipo.t-aplicada{background:#3d3416;color:#e8c874}
+  body.oscuro .badge-tipo.t-repaso{background:#1f2740;color:#8ba3e8}
+  body.oscuro .badge-tipo.t-teorico{background:transparent;color:var(--tenue);border:1px solid var(--linea)}
+
+  /* ===== Filtros ===== */
+  .filtros{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:14px 0 2px}
+  .filtros .f-etq{
+    font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--tenue);
+    text-transform:uppercase;letter-spacing:.06em;margin-right:2px;
+  }
+  .chip{
+    padding:6px 13px;border:1px solid var(--linea);border-radius:20px;background:var(--papel-2);
+    color:var(--tenue);cursor:pointer;font-size:13px;font-family:inherit;transition:all .15s ease;
+  }
+  .chip:hover{border-color:var(--acento)}
+  .chip.activo{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+  body.oscuro .chip.activo{background:var(--acento);color:#15171e;border-color:var(--acento)}
 </style>
 </head>
 <body>
@@ -257,7 +310,7 @@
     <nav class="indice">
       <h4>Ir directo a</h4>
       <div class="indice-cols">
-        <a href="#mecanica">⚙️ Física Mecánica (11 talleres)</a>
+        <a href="#mecanica">⚙️ Física Mecánica (13 talleres)</a>
         <a href="#electricidad">⚡ Electricidad y Magnetismo (11 talleres)</a>
       </div>
     </nav>
@@ -295,6 +348,72 @@
         </div>
       </details>
 
+    <!-- ===== Empieza aquí ===== -->
+    <section class="empieza" id="empieza">
+      <div class="empieza-cab">
+        <span class="pin">Empieza aquí</span>
+        <h2>¿Por dónde comienzo?</h2>
+      </div>
+      <p class="empieza-desc">Si es tu primera vez, esta es una ruta sugerida: primero las bases de cada curso, luego un taller de aplicación real para ver la física en contexto de ingeniería.</p>
+      <div class="rec-rejilla">
+
+        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Unidades_Medidas.ipynb">
+          <span class="rec-orden">01 · Mecánica</span>
+          <h4>Unidades, Medidas y Reporte</h4>
+          <span class="rec-nota">Base de todo: convertir bien, cifras significativas, reportar con rigor.</span>
+          <span class="rec-ir">Abrir</span>
+        </a>
+
+        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">
+          <span class="rec-orden">02 · Mecánica</span>
+          <h4>Movimiento Rectilíneo</h4>
+          <span class="rec-nota">Tu primer taller de simulación: velocidad y aceleración con gráficas en vivo.</span>
+          <span class="rec-ir">Abrir</span>
+        </a>
+
+        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_Sismos.ipynb">
+          <span class="rec-orden">03 · Aplicación</span>
+          <h4>MRU y Ondas Sísmicas</h4>
+          <span class="rec-nota">Caso real colombiano: alerta sísmica temprana con las redes del SGC.</span>
+          <span class="rec-ir">Abrir</span>
+        </a>
+
+        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">
+          <span class="rec-orden">04 · E&amp;M</span>
+          <h4>Carga, Coulomb y Campo</h4>
+          <span class="rec-nota">La puerta de entrada a Electricidad y Magnetismo: base de todo el curso.</span>
+          <span class="rec-ir">Abrir</span>
+        </a>
+
+        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Circuitos_DC.ipynb">
+          <span class="rec-orden">05 · E&amp;M</span>
+          <h4>Circuitos de Corriente Directa</h4>
+          <span class="rec-nota">Serie/paralelo, Kirchhoff y RC: el taller más aplicable a instalaciones.</span>
+          <span class="rec-ir">Abrir</span>
+        </a>
+
+        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">
+          <span class="rec-orden">06 · Aplicación</span>
+          <h4>Campo Eléctrico y Cinemática</h4>
+          <span class="rec-nota">Nivel avanzado con cálculo integral: aceleración de un ión entre cables.</span>
+          <span class="rec-ir">Abrir</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== Filtros ===== -->
+    <div class="filtros">
+      <span class="f-etq">Curso</span>
+      <button class="chip activo" data-filtro="curso" data-valor="todos" onclick="filtrarChip(this)">Todos</button>
+      <button class="chip" data-filtro="curso" data-valor="mec" onclick="filtrarChip(this)">Mecánica</button>
+      <button class="chip" data-filtro="curso" data-valor="elec" onclick="filtrarChip(this)">E&amp;M</button>
+      <span class="f-etq" style="margin-left:10px">Tipo</span>
+      <button class="chip activo" data-filtro="tipo" data-valor="todos" onclick="filtrarChip(this)">Todos</button>
+      <button class="chip" data-filtro="tipo" data-valor="aplicada" onclick="filtrarChip(this)">Aplicación</button>
+      <button class="chip" data-filtro="tipo" data-valor="repaso" onclick="filtrarChip(this)">Repaso</button>
+    </div>
+
     <section class="curso mec" id="mecanica">
     <div class="curso-cab">
       <span class="curso-num">FÍS · MEC</span>
@@ -328,6 +447,7 @@
       </article>
 
       <article class="taller aplicada">
+        <span class="badge-tipo t-aplicada">Aplicación</span>
         <span class="cap">Aplicación — MRU</span>
         <h3>MRU y Ondas Sísmicas</h3>
         <p>Alerta sísmica temprana, onda P vs onda S, localización del epicentro, ventana de aviso y velocidad promedio por capas. Aplicación con contexto colombiano (redes del SGC).</p>
@@ -400,6 +520,7 @@
       </article>
 
       <article class="taller repaso">
+        <span class="badge-tipo t-repaso">Repaso</span>
         <span class="cap">Repaso — Cinemática 1D</span>
         <h3>Conversión de Unidades y Cinemática 1D</h3>
         <p>Conversión imperial→SI (tuberías), análisis de gráficas v-t (aceleración, desplazamiento vs distancia) y MRUA aplicado al tejo colombiano. Ideal como quiz de repaso.</p>
@@ -433,6 +554,7 @@
       </article>
 
       <article class="taller aplicada">
+        <span class="badge-tipo t-aplicada">Aplicación</span>
         <span class="cap">Aplicación — Campo Eléctrico</span>
         <h3>Campo Eléctrico y Cinemática de Cargas</h3>
         <p>Dos cables cargados: campo por superposición, aceleración de un ión Na⁺, integración a·dx=v·dv, y análisis del error de suponer campo constante (37%). Nivel avanzado con cálculo integral.</p>
@@ -528,34 +650,17 @@
     <div>Nora Yamile Rojas Cataño · aporte pedagógico y metodología de evaluación</div>
     <div style="margin-top:6px;font-size:13px">Metodología centrada en el razonamiento: cada punto integra preguntas de argumentación (“defiende tu conclusión”) y un recuadro de tutor socrático (TIP-IA) que guía sin resolver.</div>
     <div style="margin-top:6px">Bogotá, Colombia · Proyecto iniciado en julio de 2026</div>
-    <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a></div>
+    <div style="margin-top:10px">
+      <a href="https://github.com/brfisica/fisica-br" target="_blank">Repositorio en GitHub</a> ·
+      <a href="https://github.com/brfisica/fisica-br/issues/new" target="_blank">Reportar un error o sugerir mejora</a>
+    </div>
+    <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a> · Última actualización: agosto de 2026</div>
   </div>
 </footer>
 
 <script>
 function _norm(s){
   return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-}
-function filtrar(){
-  var q=_norm(document.getElementById('busca').value.trim());
-  var tarjetas=document.querySelectorAll('article.taller:not(.pronto)');
-  var visibles=0;
-  tarjetas.forEach(function(t){
-    var texto=_norm(t.textContent);
-    var coincide=texto.indexOf(q)!==-1;
-    t.style.display=coincide?'':'none';
-    if(coincide) visibles++;
-  });
-  document.querySelectorAll('article.taller.pronto').forEach(function(t){
-    t.style.display=q===''?'':'none';
-  });
-  document.getElementById('sin-res').style.display=(visibles===0&&q!=='')?'block':'none';
-  if(q.length>=2 && !window._yaSalto){
-    var destino=document.getElementById('mecanica');
-    if(destino){ destino.scrollIntoView({behavior:'smooth',block:'start'}); }
-    window._yaSalto=true;
-  }
-  if(q.length===0){ window._yaSalto=false; }
 }
 function alternarTema(){
   document.body.classList.toggle('oscuro');
@@ -569,6 +674,58 @@ try{
     document.getElementById('btn-tema').textContent='☀️ Modo claro';
   }
 }catch(e){}
+
+/* ===== Filtros por chip (curso + tipo), combinados con el buscador ===== */
+var _filtroCurso='todos', _filtroTipo='todos';
+function _tipoDe(t){
+  if(t.classList.contains('aplicada')) return 'aplicada';
+  if(t.classList.contains('repaso')) return 'repaso';
+  return 'teorico';
+}
+function _cursoDe(t){
+  var sec=t.closest('section.curso');
+  return sec && sec.classList.contains('mec') ? 'mec' : 'elec';
+}
+function filtrarChip(btn){
+  var grupo=btn.getAttribute('data-filtro');
+  document.querySelectorAll('.chip[data-filtro="'+grupo+'"]').forEach(function(c){c.classList.remove('activo');});
+  btn.classList.add('activo');
+  if(grupo==='curso') _filtroCurso=btn.getAttribute('data-valor');
+  else _filtroTipo=btn.getAttribute('data-valor');
+  filtrar();
+}
+function filtrar(){
+  var q=_norm(document.getElementById('busca').value.trim());
+  var tarjetas=document.querySelectorAll('article.taller:not(.pronto)');
+  var visibles=0;
+  tarjetas.forEach(function(t){
+    var texto=_norm(t.textContent);
+    var coincideTexto=texto.indexOf(q)!==-1;
+    var coincideCurso=(_filtroCurso==='todos')||(_cursoDe(t)===_filtroCurso);
+    var coincideTipo=(_filtroTipo==='todos')||(_tipoDe(t)===_filtroTipo);
+    var mostrar=coincideTexto&&coincideCurso&&coincideTipo;
+    t.style.display=mostrar?'':'none';
+    if(mostrar) visibles++;
+  });
+  /* Tiles "curso completo": ocultar si hay búsqueda o cualquier filtro activo */
+  var hayFiltro=(q!=='')||(_filtroCurso!=='todos')||(_filtroTipo!=='todos');
+  document.querySelectorAll('article.taller.pronto').forEach(function(t){
+    t.style.display=hayFiltro?'none':'';
+  });
+  /* Secciones de curso: ocultar la que quede sin talleres visibles */
+  document.querySelectorAll('section.curso').forEach(function(sec){
+    var vis=sec.querySelectorAll('article.taller:not(.pronto)');
+    var alguna=Array.prototype.some.call(vis,function(t){return t.style.display!=='none';});
+    sec.style.display=alguna?'':'none';
+  });
+  document.getElementById('sin-res').style.display=(visibles===0)?'block':'none';
+  if(q.length>=2 && !window._yaSalto){
+    var destino=document.getElementById('mecanica');
+    if(destino){ destino.scrollIntoView({behavior:'smooth',block:'start'}); }
+    window._yaSalto=true;
+  }
+  if(q.length===0){ window._yaSalto=false; }
+}
 </script>
 
 </body>
