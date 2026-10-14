@@ -1,5 +1,11 @@
-numpy>=1.26
-scipy>=1.11
-matplotlib>=3.7
-ipywidgets>=8.0
-voila>=0.5
+# Versiones fijas para que Binder construya siempre el mismo entorno.
+# Verificadas el 2026-10-14 con Python 3.11 (runtime.txt): los 25 talleres
+# se ejecutan sin errores y Voilà los renderiza con sus widgets.
+# Para actualizar: subir una versión, ejecutar todos los talleres y volver a fijar.
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.2
+ipywidgets==8.1.9
+widgetsnbextension==4.0.16
+jupyterlab-widgets==3.0.17
+voila==0.5.13
