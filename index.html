@@ -305,11 +305,23 @@
     .meta{gap:4px 16px;margin-top:14px;font-size:12px}
     .aviso-top{font-size:13px}
   }
+
+  /* Motivo del encabezado: campo magnético de una corriente que sale de la página (antihorario) */
+  header .contenedor{position:relative}
+  .motivo{position:absolute;right:24px;top:-8px;width:230px;height:230px;pointer-events:none}
+  .motivo .m1{stroke:var(--acento)} .motivo .m2{stroke:var(--acento);opacity:.6} .motivo .m3{stroke:var(--acento);opacity:.3}
+  .motivo .nucleo{fill:var(--tinta);stroke:none} .motivo .punto{fill:var(--papel);stroke:none}
+  @media(max-width:900px){.motivo{display:none}}
 </style>
 </head>
 <body>
 <header>
   <div class="contenedor">
+    <svg class="motivo" aria-hidden="true" viewBox="0 0 300 300" fill="none" stroke-width="5">
+      <circle cx="150" cy="150" r="140" class="m3"/><circle cx="150" cy="150" r="100" class="m2"/><circle cx="150" cy="150" r="60" class="m1"/>
+      <path d="M150 50 l12 -8 m-12 8 l12 8" class="m1"/><path d="M150 90 l10 -7 m-10 7 l10 7" class="m1"/>
+      <circle cx="150" cy="150" r="22" class="nucleo"/><circle cx="150" cy="150" r="7" class="punto"/>
+    </svg>
     <div class="marca">
       <div class="logo-br">BR</div>
       <div>
