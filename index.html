@@ -130,6 +130,23 @@
   .meta b{color:var(--tinta);font-weight:600}
 
   /* Curso */
+  .docentes{margin:56px 0 40px}
+  .doc-banda{position:relative;overflow:hidden;border-radius:12px;padding:22px 24px 20px 34px;margin-bottom:22px;background:var(--papel-2);border:1px solid var(--linea)}
+  .doc-banda::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(to bottom,var(--acento) 0 50%,var(--acento-2) 50% 100%)}
+  .doc-banda h2{display:inline;font-size:26px;font-weight:700;letter-spacing:-.01em;margin-left:12px;vertical-align:middle}
+  .doc-banda p{color:var(--tenue);font-size:15px;margin:10px 0 0;max-width:72ch}
+  .doc-num{background:var(--tinta)!important;vertical-align:middle}
+  .doc-rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media(max-width:980px){.doc-rejilla{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.doc-rejilla{grid-template-columns:1fr}.doc-banda{padding:18px 16px 16px 26px}.doc-banda::before{width:7px}.doc-banda h2{display:block;margin:10px 0 0}}
+  .doc-item{background:var(--papel-2);border:1px solid var(--linea);border-radius:12px;padding:18px 20px}
+  .doc-item h3{font-size:17px;margin:0 0 8px}
+  .doc-item p{font-size:14.5px;line-height:1.6;color:var(--tenue);margin:0}
+  .doc-item b{color:var(--tinta)}
+  .doc-item a,.doc-contacto a{color:var(--acento)}
+  .doc-aviso{border-color:#c9962b;background:#fdf6e6}
+  body.oscuro .doc-aviso{background:#2b2717;border-color:#8f6d1e}
+  .doc-contacto{margin:18px 0 0;font-size:14.5px;color:var(--tenue)}
   .curso{margin:52px 0}
   .curso-banda{position:relative;overflow:hidden;border-radius:12px;padding:22px 24px 20px 34px;margin-bottom:24px;
     background:var(--papel-2);background:color-mix(in srgb,var(--acento) 7%,var(--papel));border:1px solid var(--linea)}
@@ -257,6 +274,7 @@
   .ecosistema b{color:var(--tinta)}
 
   .aviso-top{margin:18px 0 4px}
+  .aviso-top a{color:var(--acento);font-weight:600}
   footer{border-top:2px solid var(--tinta);margin-top:60px;padding:28px 0 50px;font-size:13px;color:var(--tenue)}
   footer b{color:var(--tinta)}
   footer a{color:var(--acento);text-decoration:none}
@@ -404,7 +422,7 @@
       </svg>
     </div>
     <div class="aviso aviso-top">
-      <b>Nota para estudiantes:</b> la primera vez que abras un taller puede tardar 1–2 minutos en cargar mientras se prepara el entorno ejecutable. Después funciona de forma fluida. Acceso libre sin necesidad de crear cuenta ni instalar software.
+      <b>Nota para estudiantes:</b> la primera vez que abras un taller puede tardar 1–2 minutos en cargar mientras se prepara el entorno ejecutable. Después funciona de forma fluida. Acceso libre sin necesidad de crear cuenta ni instalar software. <b>¿Eres docente?</b> <a href="#docentes">Mira la sección para docentes</a>.
     </div>
     <div class="meta">
       <span><b id="n-talleres">26</b> talleres interactivos</span>
@@ -808,6 +826,30 @@
 
     </div>
   </section>
+
+  <!-- ===== Para docentes ===== -->
+  <section class="docentes" id="docentes">
+    <div class="doc-banda">
+      <span class="curso-num doc-num">DOCENTES</span>
+      <h2>Para docentes</h2>
+      <p>Los talleres pueden usarse en línea con cualquier grupo, sin registrarse. Esto es lo que conviene saber antes de llevarlos a clase.</p>
+    </div>
+    <div class="doc-rejilla">
+      <div class="doc-item"><h3>Cómo encajan en un curso</h3>
+        <p>Cada punto toma unos 10 minutos. Sirven como preparación antes de clase, como laboratorio en el aula o como tarea. El <b>mapa de ruta</b> de cada curso muestra qué taller conviene hacer antes de cuál, y la numeración de capítulos sigue los libros de los autores.</p></div>
+      <div class="doc-item"><h3>Qué evalúan</h3>
+        <p>Además del cálculo, cada punto trae preguntas de <b>"defiende tu conclusión"</b>: el estudiante debe distinguir una afirmación correcta de una que solo suena convincente. Varias opciones tienen el veredicto correcto con una razón falsa, así que adivinar el veredicto no basta.</p></div>
+      <div class="doc-item doc-aviso"><h3>La nota no queda registrada</h3>
+        <p>La calificación (0,0 a 5,0; 100 %, 50 % o 25 % del crédito según el intento) se calcula en el navegador del estudiante. No se envía a ningún lado, se pierde al recargar la página y el taller puede repetirse. Úsela como <b>nota formativa</b>. Si necesita una nota sumativa, pida la captura de la calificación y que el estudiante <b>defienda en clase</b>, de palabra o por escrito, una de las preguntas del taller.</p></div>
+      <div class="doc-item"><h3>Inteligencia artificial (TIP-IA)</h3>
+        <p>Cada punto propone usar un asistente de IA como tutor que pregunta en vez de resolver. Si quiere evaluar ese uso, puede pedir al estudiante que entregue la conversación y señale en qué momento el asistente le hizo cambiar o confirmar su razonamiento.</p></div>
+      <div class="doc-item"><h3>Antes de la sesión</h3>
+        <p>La primera apertura tarda 1–2 minutos, y el servicio gratuito que ejecuta los talleres (Binder) puede limitar los usuarios simultáneos. Con grupos grandes, abra el taller unos minutos antes y tenga a mano el enlace <b>"o en Colab"</b> de cada tarjeta como respaldo; Colab pide cuenta de Google.</p></div>
+      <div class="doc-item"><h3>Adaptar o reproducir un taller</h3>
+        <p>El material tiene <b>todos los derechos reservados</b>: puede usarse en línea tal como se publica, pero copiarlo, adaptarlo (cambiar datos, contextos o preguntas) o distribuirlo requiere autorización de los autores. Si quiere una versión para su curso, <a href="https://github.com/brfisica/fisica-br/issues/new" target="_blank" rel="noopener">escríbanos</a>. Ver <a href="LICENSE">condiciones de uso</a>.</p></div>
+    </div>
+    <p class="doc-contacto">¿Encontró un error, o quiere proponer un taller o una mejora? <a href="https://github.com/brfisica/fisica-br/issues/new" target="_blank" rel="noopener">Escríbanos en GitHub</a> (requiere cuenta).</p>
+  </section>
   </main>
 
 <footer>
@@ -818,10 +860,11 @@
     <div style="margin-top:6px;font-size:13px">Metodología centrada en el razonamiento: cada punto integra preguntas de argumentación (“defiende tu conclusión”) y un recuadro de tutor socrático (TIP-IA) que guía sin resolver.</div>
     <div style="margin-top:6px">Bogotá, Colombia · Proyecto iniciado en julio de 2026</div>
     <div style="margin-top:10px">
+      <a href="#docentes">Para docentes</a> ·
       <a href="https://github.com/brfisica/fisica-br" target="_blank" rel="noopener">Repositorio en GitHub</a> ·
       <a href="https://github.com/brfisica/fisica-br/issues/new" target="_blank" rel="noopener">Reportar un error o sugerir mejora</a>
     </div>
-    <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a> · Última actualización: octubre de 2026</div>
+    <div class="lic">© 2026 Juan David Betancur Ríos y Nora Yamile Rojas Cataño · Todos los derechos reservados · <a href="LICENSE">Condiciones de uso</a> · Última actualización: octubre de 2026</div>
   </div>
 </footer>
 

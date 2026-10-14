@@ -23,13 +23,11 @@ nada ni requerir cuenta.
 
 ## Licencia
 
-© julio 2026 Juan David Betancur Ríos.
+© 2026 Juan David Betancur Ríos y Nora Yamile Rojas Cataño. **Todos los derechos reservados.**
 
-Este material está licenciado bajo
-**Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional
-(CC BY-NC-SA 4.0)**. Puede usarse y adaptarse con fines educativos citando a los
-autores, sin fines comerciales y compartiendo bajo la misma licencia.
-Ver el archivo [LICENSE](LICENSE) para los detalles.
+Los talleres pueden usarse en línea, tal como se publican en el portal, con fines de
+enseñanza y aprendizaje. Su reproducción, distribución, adaptación o uso comercial
+requiere autorización previa de los autores. Ver el archivo [LICENSE](LICENSE).
 
 *Material elaborado con apoyo de herramientas de inteligencia artificial, bajo la
 supervisión y criterio pedagógico de los autores.*
