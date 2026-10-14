@@ -1,11 +1,12 @@
 """Genera las miniaturas del portal a partir del esquema() de cada taller.
 
 Uso (desde la raíz del repositorio):
-    python herramientas/generar_miniaturas.py            # todos los talleres
-    python herramientas/generar_miniaturas.py Taller_Fluidos.ipynb
+    python generar_miniaturas.py                 # todos los talleres
+    python generar_miniaturas.py Taller_Fluidos.ipynb
+    python generar_miniaturas.py --todos         # además, un PNG por punto en revision_miniaturas/
 
 Ejecuta cada taller, toma la primera figura de la celda del punto elegido
-(por defecto el Punto 1; ver ELEGIDO) y la guarda como miniaturas/<taller>.webp
+(por defecto el Punto 1; ver ELEGIDO) y la guarda junto al taller como <taller>.webp
 (560 × 300 px, se muestra a la mitad para pantallas de alta densidad).
 """
 import sys, glob, io, base64, os, re
@@ -43,18 +44,18 @@ def miniatura(png):
 
 if __name__ == '__main__':
     rutas = sys.argv[1:] or sorted(glob.glob('Taller_*.ipynb'))
-    os.makedirs('miniaturas', exist_ok=True)
     todos = '--todos' in rutas
+    if todos: os.makedirs('revision_miniaturas', exist_ok=True)
     rutas = [r for r in rutas if r != '--todos']
     for ruta in rutas:
         nombre = ruta[:-6]
         figs = esquemas(ruta)
         if todos:   # modo revisión: guarda el esquema de cada punto
             for p, png in figs.items():
-                miniatura(png).save(f'miniaturas/_{nombre}__p{p}.png')
+                miniatura(png).save(f'revision_miniaturas/{nombre}__p{p}.png')
         p = ELEGIDO.get(nombre, 1)
         if p in figs:
-            miniatura(figs[p]).save(f'miniaturas/{nombre.replace(" ", "_").replace("(", "").replace(")", "")}.webp', 'WEBP', quality=80, method=6)
+            miniatura(figs[p]).save(f'{nombre.replace(" ", "_").replace("(", "").replace(")", "")}.webp', 'WEBP', quality=80, method=6)
             print(f'{nombre}: punto {p} de {sorted(figs)}')
         else:
             print(f'{nombre}: SIN esquema para el punto {p} ({sorted(figs)})')
