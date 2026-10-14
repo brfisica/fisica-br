@@ -1,5 +1,5 @@
 # Versiones fijas para que Binder construya siempre el mismo entorno.
-# Verificadas el 2026-10-14 con Python 3.11 (runtime.txt): los 25 talleres
+# Verificadas el 2026-10-14 con Python 3.11 (runtime.txt): los 26 talleres
 # se ejecutan sin errores y Voilà los renderiza con sus widgets.
 # Para actualizar: subir una versión, ejecutar todos los talleres y volver a fijar.
 numpy==2.4.6
