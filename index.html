@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Física BR · Simulaciones y física interactiva para ingeniería</title>
+<meta name="description" content="Talleres interactivos y gratuitos de Física Mecánica y de Electricidad y Magnetismo para ingeniería: simulaciones con controles deslizantes, soluciones paso a paso y cuestionarios que evalúan el razonamiento. Sin cuenta ni instalación.">
+<link rel="canonical" href="https://brfisica.github.io/fisica-br/">
+<meta name="theme-color" content="#1a1f2e">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231a1f2e'/><text x='32' y='42' text-anchor='middle' font-family='Menlo,monospace' font-weight='700' font-size='28' fill='%23f6f4ef'>BR</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Física BR">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Física BR · Física interactiva para ingeniería">
+<meta property="og:description" content="Talleres interactivos y gratuitos de Física Mecánica y de Electricidad y Magnetismo para ingeniería: simulaciones con controles deslizantes, soluciones paso a paso y cuestionarios que evalúan el razonamiento. Sin cuenta ni instalación.">
+<meta property="og:url" content="https://brfisica.github.io/fisica-br/">
+<meta property="og:image" content="https://brfisica.github.io/fisica-br/og-imagen.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Física BR: talleres interactivos de física para ingeniería">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root{
     --tinta:#1a1f2e;        /* azul-tinta profundo */
@@ -166,12 +181,12 @@
   .taller.repaso .cap{color:#3a5bc0}
   .taller.aplicada:hover{border-color:#c8901f;box-shadow:0 8px 24px rgba(217,164,65,.25)}
   .taller.aplicada .cap{
-    color:#b8791a;font-weight:700;
+    color:#8f5d0e;font-weight:700;
     background:#fdefd0;padding:3px 9px;border-radius:5px;align-self:flex-start;
   }
   .taller.aplicada h3{font-size:21px;font-weight:800;color:var(--tinta)}
-  .taller.aplicada .abrir{background:#c8901f}
-  .taller.aplicada .abrir:hover{background:#a8760f}
+  .taller.aplicada .abrir{background:#8f5d0e}
+  .taller.aplicada .abrir:hover{background:#7a510c}
 
   /* Tarjetas de aplicación en MODO OSCURO (dorado oscuro, texto claro) */
   body.oscuro .taller.aplicada{
@@ -252,7 +267,7 @@
     font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
     padding:2px 8px;border-radius:4px;margin-bottom:2px;
   }
-  .badge-tipo.t-aplicada{background:#fdefd0;color:#b8791a}
+  .badge-tipo.t-aplicada{background:#fdefd0;color:#8f5d0e}
   .badge-tipo.t-repaso{background:#e6ecfb;color:#3a5bc0}
   .badge-tipo.t-teorico{background:var(--papel);color:var(--tenue);border:1px solid var(--linea)}
   body.oscuro .badge-tipo.t-aplicada{background:#3d3416;color:#e8c874}
@@ -272,6 +287,24 @@
   .chip:hover{border-color:var(--acento)}
   .chip.activo{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
   body.oscuro .chip.activo{background:var(--acento);color:#15171e;border-color:var(--acento)}
+
+  /* ===== Accesibilidad y ajustes (oct 2026) ===== */
+  h1.marca-nombre{margin:0}
+  .indice h2{margin:0 0 10px;font-size:14px;color:var(--tenue);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+  .rec h3{font-size:16px;font-weight:700;line-height:1.25;color:var(--tinta);margin:0}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  .acciones{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:6px}
+  .acciones .abrir{margin-top:0}
+  .alt{font-size:12.5px;color:var(--tenue);text-decoration:underline;text-underline-offset:3px}
+  .alt:hover{color:var(--acento)}
+  .badge-tipo.t-nuevo{background:#dff3ec;color:#0b5a46}
+  body.oscuro .badge-tipo.t-nuevo{background:#123a30;color:#7fe0c4}
+  @media(max-width:600px){
+    .sub{font-size:16px;margin-top:12px}
+    .meta{gap:4px 16px;margin-top:14px;font-size:12px}
+    .aviso-top{font-size:13px}
+  }
 </style>
 </head>
 <body>
@@ -280,7 +313,7 @@
     <div class="marca">
       <div class="logo-br">BR</div>
       <div>
-        <div class="marca-nombre">Física <span class="acento-verde">BR</span></div>
+        <h1 class="marca-nombre">Física <span class="acento-verde">BR</span></h1>
         <div class="marca-bajada">Simulaciones y modelado interactivo para ingeniería</div>
       </div>
     </div>
@@ -300,15 +333,15 @@
     <!-- Barra de herramientas: buscador + modo oscuro -->
     <div class="barra-tools">
       <div class="buscador">
-        <input type="text" id="busca" placeholder="Buscar taller por tema, título o palabra clave…" oninput="filtrar()">
+        <input type="text" id="busca" placeholder="Buscar por tema…" aria-label="Buscar talleres" oninput="filtrar()">
       </div>
       <button class="btn-tema" onclick="alternarTema()" id="btn-tema">🌙 Modo oscuro</button>
     </div>
     <p class="sin-resultados" id="sin-res">No se encontraron talleres con ese término.</p>
 
     <!-- Índice de salto -->
-    <nav class="indice">
-      <h4>Ir directo a</h4>
+    <nav class="indice" aria-label="Ir directo a un curso">
+      <h2>Ir directo a</h2>
       <div class="indice-cols">
         <a href="#mecanica">⚙️ Física Mecánica (14 talleres)</a>
         <a href="#electricidad">⚡ Electricidad y Magnetismo (12 talleres)</a>
@@ -325,10 +358,11 @@
           <div class="guia-item"><span class="guia-icono">⏳</span><div>La <b>primera vez</b> que abres un taller, tarda 1–2 minutos en preparar el entorno. Después es rápido.</div></div>
           <div class="guia-item"><span class="guia-icono">🎚️</span><div>Mueve los <b>deslizadores (sliders)</b> para cambiar los parámetros y ver la física en tiempo real.</div></div>
           <div class="guia-item"><span class="guia-icono">📐</span><div>Cada punto tiene un <b>esquema conceptual</b> que explica el "porqué" físico, no solo el resultado.</div></div>
-          <div class="guia-item"><span class="guia-icono">✅</span><div>Los <b>cuestionarios</b> dan una nota formativa de 0,0 a 5,0. Puedes <b>reintentar</b> las veces que quieras.</div></div>
+          <div class="guia-item"><span class="guia-icono">✅</span><div>Los <b>cuestionarios</b> dan una nota formativa de 0,0 a 5,0. Cada pregunta tiene <b>3 intentos</b>: 100 % del crédito al primero, 50 % al segundo y 25 % al tercero. Razona antes de verificar.</div></div>
           <div class="guia-item"><span class="guia-icono">🔧</span><div>Cada punto incluye una <b>aplicación en ingeniería</b> con contexto colombiano real.</div></div>
           <div class="guia-item"><span class="guia-icono">🧠</span><div>Las preguntas de <b>"defiende tu conclusión"</b> evalúan tu razonamiento: no basta el número, hay que justificar el porqué físico y distinguir una respuesta correcta de una que solo suena convincente.</div></div>
           <div class="guia-item"><span class="guia-icono">🤖</span><div>El recuadro <b>TIP-IA</b> te invita a usar un asistente como tutor socrático: verifica tu razonamiento sin pedir la solución. La regla de oro: primero resuelves tú, después consultas.</div></div>
+          <div class="guia-item"><span class="guia-icono">🛟</span><div>Si un taller no carga, usa el enlace <b>"o en Colab"</b> de su tarjeta (requiere cuenta de Google) y ejecuta <b>Entorno de ejecución → Ejecutar todo</b>.</div></div>
           <div class="guia-item"><span class="guia-icono">🖱️</span><div>Pulsa <b>"Mostrar solución"</b> para ver el desarrollo paso a paso cuando lo necesites.</div></div>
         </div>
         <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--linea);font-size:13px;color:var(--tenue)">
@@ -357,46 +391,46 @@
       <p class="empieza-desc">Si es tu primera vez, esta es una ruta sugerida: primero las bases de cada curso, luego un taller de aplicación real para ver la física en contexto de ingeniería.</p>
       <div class="rec-rejilla">
 
-        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Unidades_Medidas.ipynb">
+        <a class="rec" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Unidades_Medidas.ipynb">
           <span class="rec-orden">01 · Mecánica</span>
-          <h4>Unidades, Medidas y Reporte</h4>
+          <h3>Unidades, Medidas y Reporte</h3>
           <span class="rec-nota">Base de todo: convertir bien, cifras significativas, reportar con rigor.</span>
-          <span class="rec-ir">Abrir</span>
+          <span class="rec-ir">Abrir<span class="sr"> (se abre en una pestaña nueva)</span></span>
         </a>
 
-        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">
+        <a class="rec" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">
           <span class="rec-orden">02 · Mecánica</span>
-          <h4>Movimiento Rectilíneo</h4>
+          <h3>Movimiento Rectilíneo</h3>
           <span class="rec-nota">Tu primer taller de simulación: velocidad y aceleración con gráficas en vivo.</span>
-          <span class="rec-ir">Abrir</span>
+          <span class="rec-ir">Abrir<span class="sr"> (se abre en una pestaña nueva)</span></span>
         </a>
 
-        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_Sismos.ipynb">
+        <a class="rec" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_Sismos.ipynb">
           <span class="rec-orden">03 · Aplicación</span>
-          <h4>MRU y Ondas Sísmicas</h4>
+          <h3>MRU y Ondas Sísmicas</h3>
           <span class="rec-nota">Caso real colombiano: alerta sísmica temprana con las redes del SGC.</span>
-          <span class="rec-ir">Abrir</span>
+          <span class="rec-ir">Abrir<span class="sr"> (se abre en una pestaña nueva)</span></span>
         </a>
 
-        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">
+        <a class="rec" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">
           <span class="rec-orden">04 · E&amp;M</span>
-          <h4>Carga, Coulomb y Campo</h4>
+          <h3>Carga, Coulomb y Campo</h3>
           <span class="rec-nota">La puerta de entrada a Electricidad y Magnetismo: base de todo el curso.</span>
-          <span class="rec-ir">Abrir</span>
+          <span class="rec-ir">Abrir<span class="sr"> (se abre en una pestaña nueva)</span></span>
         </a>
 
-        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Circuitos_DC.ipynb">
+        <a class="rec" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Circuitos_DC.ipynb">
           <span class="rec-orden">05 · E&amp;M</span>
-          <h4>Circuitos de Corriente Directa</h4>
+          <h3>Circuitos de Corriente Directa</h3>
           <span class="rec-nota">Serie/paralelo, Kirchhoff y RC: el taller más aplicable a instalaciones.</span>
-          <span class="rec-ir">Abrir</span>
+          <span class="rec-ir">Abrir<span class="sr"> (se abre en una pestaña nueva)</span></span>
         </a>
 
-        <a class="rec" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">
+        <a class="rec" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">
           <span class="rec-orden">06 · Aplicación</span>
-          <h4>Campo Eléctrico y Cinemática</h4>
+          <h3>Campo Eléctrico y Cinemática</h3>
           <span class="rec-nota">Nivel avanzado con cálculo integral: aceleración de un ión entre cables.</span>
-          <span class="rec-ir">Abrir</span>
+          <span class="rec-ir">Abrir<span class="sr"> (se abre en una pestaña nueva)</span></span>
         </a>
 
       </div>
@@ -423,27 +457,27 @@
     <div class="rejilla">
 
       <article class="taller">
-        <span class="cap">Cap. 1 — Fundamentos</span>
+        <span class="cap">Cap. 2 — Unidades y medidas</span>
         <h3>Unidades, Medidas y Reporte</h3>
         <p>Conversión de unidades, cifras significativas e interpretación de gráficas, más la importancia en ingeniería de convertir bien (casos reales) y reportar resultados con rigor en informes. Base de todo el curso.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Unidades_Medidas.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · punto de partida</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Unidades_Medidas.ipynb">Abrir taller<span class="sr"> Unidades, Medidas y Reporte (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Unidades_Medidas.ipynb">o en Colab<span class="sr"> — Unidades, Medidas y Reporte, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 2 — Metrología</span>
+        <span class="cap">Cap. 2 — Incertidumbre</span>
         <h3>Errores e Incertidumbre</h3>
         <p>Exactitud vs. precisión, tipos de error y métricas, estadística de mediciones (promedio, desviación, error de la media) y propagación de errores. Con práctica de laboratorio en casa usando instrumentos cotidianos.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Errores_Incertidumbre.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Unidades y Medidas</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Errores_Incertidumbre.ipynb">Abrir taller<span class="sr"> Errores e Incertidumbre (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Errores_Incertidumbre.ipynb">o en Colab<span class="sr"> — Errores e Incertidumbre, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 2 — Cinemática 1D</span>
+        <span class="cap">Cap. 4 — Cinemática 1D</span>
         <h3>Movimiento Rectilíneo (MRU/MRUA)</h3>
         <p>Velocidad constante y aceleración constante: banda, arranque del Metro, frenado y encuentro. Gráficas x-t, v-t, a-t.</p>
-        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">Abrir taller</a>
+        <span class="puntos">4 puntos · ≈ 40 min · antes: Unidades y Medidas</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">Abrir taller<span class="sr"> Movimiento Rectilíneo (MRU/MRUA) (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_MRU_MRUA.ipynb">o en Colab<span class="sr"> — Movimiento Rectilíneo (MRU/MRUA), alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller aplicada">
@@ -451,80 +485,80 @@
         <span class="cap">Aplicación — MRU</span>
         <h3>MRU y Ondas Sísmicas</h3>
         <p>Alerta sísmica temprana, onda P vs onda S, localización del epicentro, ventana de aviso y velocidad promedio por capas. Aplicación con contexto colombiano (redes del SGC).</p>
-        <span class="puntos">6 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_Sismos.ipynb">Abrir taller</a>
+        <span class="puntos">6 puntos · ≈ 60 min · antes: Movimiento Rectilíneo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_Sismos.ipynb">Abrir taller<span class="sr"> MRU y Ondas Sísmicas (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_MRU_Sismos.ipynb">o en Colab<span class="sr"> — MRU y Ondas Sísmicas, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 3 — Caída libre</span>
+        <span class="cap">Cap. 4 — Caída libre</span>
         <h3>Movimiento bajo la Gravedad</h3>
         <p>Caída libre, tiro vertical y comparaciones. Contextos: obra, refinería, edificios. Verificación v²=2gh.</p>
-        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Caida_Libre.ipynb">Abrir taller</a>
+        <span class="puntos">4 puntos · ≈ 40 min · antes: Movimiento Rectilíneo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Caida_Libre.ipynb">Abrir taller<span class="sr"> Movimiento bajo la Gravedad (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Caida_Libre.ipynb">o en Colab<span class="sr"> — Movimiento bajo la Gravedad, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 4 — Movimiento 2D</span>
+        <span class="cap">Cap. 5 — Movimiento 2D</span>
         <h3>Movimiento de Proyectiles</h3>
         <p>Lanzamiento con ángulo, tiro horizontal, ángulo óptimo y estado en un instante. Drones, logística, trayectorias.</p>
-        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Proyectiles.ipynb">Abrir taller</a>
+        <span class="puntos">4 puntos · ≈ 40 min · antes: Caída libre y Vectores</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Proyectiles.ipynb">Abrir taller<span class="sr"> Movimiento de Proyectiles (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Proyectiles.ipynb">o en Colab<span class="sr"> — Movimiento de Proyectiles, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Preparatorio — Vectores y fuerzas</span>
+        <span class="cap">Cap. 5 — Vectores</span>
         <h3>Vectores y Vector Resultante</h3>
         <p>Descomposición, suma de velocidades y sistemas de fuerzas concurrentes. Puente entre cinemática 2D y las Leyes de Newton. Lancha en río, cerchas, anclajes, remolque marítimo.</p>
-        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Vectores.ipynb">Abrir taller</a>
+        <span class="puntos">4 puntos · ≈ 40 min · antes: Unidades y Medidas</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Vectores.ipynb">Abrir taller<span class="sr"> Vectores y Vector Resultante (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Vectores.ipynb">o en Colab<span class="sr"> — Vectores y Vector Resultante, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 5 — Dinámica</span>
+        <span class="cap">Cap. 6 — Dinámica</span>
         <h3>Leyes de Newton</h3>
         <p>Segunda ley F=ma, peso y plano inclinado, fricción y sistemas de bloques con tensión. Vehículos, rampas, mantenimiento.</p>
-        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Leyes_Newton.ipynb">Abrir taller</a>
+        <span class="puntos">4 puntos · ≈ 40 min · antes: Vectores</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Leyes_Newton.ipynb">Abrir taller<span class="sr"> Leyes de Newton (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Leyes_Newton.ipynb">o en Colab<span class="sr"> — Leyes de Newton, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 7 — Energía</span>
         <h3>Trabajo, Energía y Potencia</h3>
         <p>Trabajo, teorema trabajo-energía, conservación de energía, potencia y fricción. Grúas, frenado vial, bombeo, rampas.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Trabajo_Energia.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Leyes de Newton</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Trabajo_Energia.ipynb">Abrir taller<span class="sr"> Trabajo, Energía y Potencia (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Trabajo_Energia.ipynb">o en Colab<span class="sr"> — Trabajo, Energía y Potencia, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 8 — Momentum</span>
         <h3>Cantidad de Movimiento e Impulso</h3>
         <p>Momentum, impulso y fuerza de impacto, choques inelásticos, retroceso/propulsión y centro de masa. Seguridad vehicular, airbags, cohetes, estabilidad.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Momentum_Impulso.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Leyes de Newton</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Momentum_Impulso.ipynb">Abrir taller<span class="sr"> Cantidad de Movimiento e Impulso (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Momentum_Impulso.ipynb">o en Colab<span class="sr"> — Cantidad de Movimiento e Impulso, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 9 — Rotación</span>
         <h3>Cinemática y Dinámica Rotacional</h3>
         <p>Cinemática angular, relación v=ωr, momento de inercia y torque, energía rotacional y conservación del momento angular. Ejes, volantes, turbinas, giroscopios.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Rotacional.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Trabajo y Energía</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Rotacional.ipynb">Abrir taller<span class="sr"> Cinemática y Dinámica Rotacional (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Rotacional.ipynb">o en Colab<span class="sr"> — Cinemática y Dinámica Rotacional, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 10 — Oscilaciones</span>
         <h3>Movimiento Oscilatorio (MAS)</h3>
         <p>Masa-resorte, periodo y frecuencia, velocidad y aceleración máximas, energía del oscilador, péndulo simple y x(t). Vibraciones, resonancia, suspensiones, sismógrafos.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Oscilaciones.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Trabajo y Energía</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Oscilaciones.ipynb">Abrir taller<span class="sr"> Movimiento Oscilatorio (MAS) (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Oscilaciones.ipynb">o en Colab<span class="sr"> — Movimiento Oscilatorio (MAS), alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 11 — Fluidos</span>
         <h3>Mecánica de Fluidos</h3>
         <p>Presión hidrostática, principio de Pascal, empuje de Arquímedes, ecuación de continuidad y ecuación de Bernoulli. Presas, prensas hidráulicas, flotación, ductos.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fluidos.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Leyes de Newton</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fluidos.ipynb">Abrir taller<span class="sr"> Mecánica de Fluidos (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fluidos.ipynb">o en Colab<span class="sr"> — Mecánica de Fluidos, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller repaso">
@@ -532,13 +566,13 @@
         <span class="cap">Repaso — Cinemática 1D</span>
         <h3>Conversión de Unidades y Cinemática 1D</h3>
         <p>Conversión imperial→SI (tuberías), análisis de gráficas v-t (aceleración, desplazamiento vs distancia) y MRUA aplicado al tejo colombiano. Ideal como quiz de repaso.</p>
-        <span class="puntos">3 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Conversion_Cinematica.ipynb">Abrir taller</a>
+        <span class="puntos">3 puntos · ≈ 30 min · antes: Movimiento Rectilíneo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Conversion_Cinematica.ipynb">Abrir taller<span class="sr"> Conversión de Unidades y Cinemática 1D (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Conversion_Cinematica.ipynb">o en Colab<span class="sr"> — Conversión de Unidades y Cinemática 1D, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller pronto">
         <span class="cap">Curso completo ✓</span>
-        <p>Física Mecánica cubre los 11 capítulos del libro.</p>
+        <p>Física Mecánica cubre los capítulos 2 a 11 del libro.</p>
       </article>
 
     </div>
@@ -557,8 +591,8 @@
         <span class="cap">Cap. 1 — Coulomb</span>
         <h3>Carga, Coulomb y Campo Eléctrico</h3>
         <p>Carga cuantizada, ley de Coulomb, superposición de fuerzas y campo eléctrico de cargas puntuales. Base de todo el curso.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · punto de partida</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">Abrir taller<span class="sr"> Carga, Coulomb y Campo Eléctrico (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Coulomb_Campo.ipynb">o en Colab<span class="sr"> — Carga, Coulomb y Campo Eléctrico, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller aplicada">
@@ -566,88 +600,89 @@
         <span class="cap">Aplicación — Campo Eléctrico</span>
         <h3>Campo Eléctrico y Cinemática de Cargas</h3>
         <p>Dos cables cargados: campo por superposición, aceleración de un ión Na⁺, integración a·dx=v·dv, y análisis del error de suponer campo constante (37%). Nivel avanzado con cálculo integral.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Coulomb y Campo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">Abrir taller<span class="sr"> Campo Eléctrico y Cinemática de Cargas (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Cables_Campo.ipynb">o en Colab<span class="sr"> — Campo Eléctrico y Cinemática de Cargas, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. — Ley de Gauss</span>
+        <span class="cap">Cap. 1 — Ley de Gauss</span>
         <h3>Ley de Gauss</h3>
         <p>Flujo y campo en esferas, cilindros, líneas de carga y láminas. Aplicaciones: sensores, RETIE, blindaje.</p>
-        <span class="puntos">6 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_de_Gauss_Interactivo_v2+%281%29.ipynb">Abrir taller</a>
+        <span class="puntos">6 puntos · ≈ 60 min · antes: Coulomb y Campo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_de_Gauss_Interactivo_v2+%281%29.ipynb">Abrir taller<span class="sr"> Ley de Gauss (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ley_de_Gauss_Interactivo_v2%20%281%29.ipynb">o en Colab<span class="sr"> — Ley de Gauss, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. — Potencial</span>
+        <span class="cap">Cap. 2 — Potencial</span>
         <h3>Potencial Eléctrico</h3>
         <p>Potencial de cargas, dipolos, capacitores y anillos; equipotenciales y E=−∇V; superposición escalar y energía del sistema; bioelectricidad (membrana, marcapasos, desfibriladores). Aplicaciones: tensión de paso RETIE, dispositivos médicos.</p>
-        <span class="puntos">8 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Potencial_Electrico.ipynb">Abrir taller</a>
+        <span class="puntos">8 puntos · ≈ 80 min · antes: Coulomb y Campo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Potencial_Electrico.ipynb">Abrir taller<span class="sr"> Potencial Eléctrico (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Potencial_Electrico.ipynb">o en Colab<span class="sr"> — Potencial Eléctrico, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. — Capacitancia</span>
+        <span class="cap">Cap. 3 — Capacitancia</span>
         <h3>Capacitores y Capacitancia</h3>
         <p>Placas paralelas, dieléctricos, asociación serie/paralelo y energía almacenada. Condensadores, desfibriladores, respaldo.</p>
-        <span class="puntos">7 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Capacitores.ipynb">Abrir taller</a>
+        <span class="puntos">7 puntos · ≈ 70 min · antes: Potencial Eléctrico</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Capacitores.ipynb">Abrir taller<span class="sr"> Capacitores y Capacitancia (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Capacitores.ipynb">o en Colab<span class="sr"> — Capacitores y Capacitancia, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 4 — Corriente</span>
         <h3>Corriente y Resistencia</h3>
         <p>Corriente, ley de Ohm, resistividad de conductores, potencia/costo energético y sensores RTD. Conductores, transmisión, instrumentación.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Corriente_Resistencia.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Potencial Eléctrico</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Corriente_Resistencia.ipynb">Abrir taller<span class="sr"> Corriente y Resistencia (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Corriente_Resistencia.ipynb">o en Colab<span class="sr"> — Corriente y Resistencia, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 5 — Circuitos DC</span>
         <h3>Circuitos de Corriente Directa</h3>
         <p>Resistencias en serie y paralelo, fuentes reales con resistencia interna, ley de nodos de Kirchhoff y circuitos RC. Divisores, instalaciones, temporizadores.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Circuitos_DC.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Corriente y Resistencia</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Circuitos_DC.ipynb">Abrir taller<span class="sr"> Circuitos de Corriente Directa (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Circuitos_DC.ipynb">o en Colab<span class="sr"> — Circuitos de Corriente Directa, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 6 — Fuerza y torque</span>
+        <span class="badge-tipo t-nuevo" data-hasta="2026-12-15">Nuevo</span>
+        <span class="cap">Cap. 6 — Campo magnético y fuerzas</span>
         <h3>Fuerza y Torque Magnéticos</h3>
         <p>Fuerza sobre cargas y conductores (catenaria de un tranvía en el campo terrestre de Bogotá), balanza de corriente con ajuste por mínimos cuadrados, torque sobre bobinas, motor de corriente continua y galvanómetro.</p>
-        <span class="puntos">6 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fuerza_Torque_Magnetico.ipynb">Abrir taller</a>
+        <span class="puntos">6 puntos · ≈ 60 min · antes: Corriente y Resistencia</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fuerza_Torque_Magnetico.ipynb">Abrir taller<span class="sr"> Fuerza y Torque Magnéticos (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fuerza_Torque_Magnetico.ipynb">o en Colab<span class="sr"> — Fuerza y Torque Magnéticos, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
-        <span class="cap">Cap. 6 — Fuentes del campo</span>
+        <span class="cap">Cap. 7 — Fuentes del campo</span>
         <h3>Fuentes del Campo Magnético</h3>
         <p>Ley de Biot-Savart: campo de un alambre recto, de una espira, de una línea bifilar de ida y retorno y de una espira cuadrada. Interferencia, cableado, detectores de lazo.</p>
-        <span class="puntos">4 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Campo_Magnetico.ipynb">Abrir taller</a>
+        <span class="puntos">4 puntos · ≈ 40 min · antes: Fuerza y Torque</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Campo_Magnetico.ipynb">Abrir taller<span class="sr"> Fuentes del Campo Magnético (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Campo_Magnetico.ipynb">o en Colab<span class="sr"> — Fuentes del Campo Magnético, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 7 — Ley de Ampère</span>
         <h3>Ley de Ampère</h3>
         <p>Campo de alambre, solenoide y toroide, corriente encerrada en un cable macizo y fuerza entre conductores paralelos. Líneas de potencia, transformadores, cortocircuitos.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_Ampere.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Fuentes del Campo</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_Ampere.ipynb">Abrir taller<span class="sr"> Ley de Ampère (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ley_Ampere.ipynb">o en Colab<span class="sr"> — Ley de Ampère, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 8 — Inducción</span>
         <h3>Inducción Electromagnética</h3>
         <p>Flujo magnético, ley de Faraday, fem en barra móvil, ley de Lenz y el transformador. Generadores, frenos magnéticos, red eléctrica y transmisión de energía.</p>
-        <span class="puntos">7 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Induccion.ipynb">Abrir taller</a>
+        <span class="puntos">7 puntos · ≈ 70 min · antes: Ley de Ampère</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Induccion.ipynb">Abrir taller<span class="sr"> Inducción Electromagnética (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion.ipynb">o en Colab<span class="sr"> — Inducción Electromagnética, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller">
         <span class="cap">Cap. 9 — Maxwell</span>
         <h3>Ecuaciones de Maxwell</h3>
         <p>Las cuatro ecuaciones (Gauss eléctrica y magnética, Faraday, Ampère-Maxwell), corriente de desplazamiento, la velocidad de la luz c=1/√(ε₀μ₀) y las ondas electromagnéticas. Telecomunicaciones, antenas, óptica.</p>
-        <span class="puntos">5 puntos · esquema + sliders + quiz</span>
-        <a class="abrir" target="_blank" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Maxwell.ipynb">Abrir taller</a>
+        <span class="puntos">5 puntos · ≈ 50 min · antes: Inducción</span>
+        <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Maxwell.ipynb">Abrir taller<span class="sr"> Ecuaciones de Maxwell (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Maxwell.ipynb">o en Colab<span class="sr"> — Ecuaciones de Maxwell, alternativa si el taller no carga</span></a></div>
       </article>
 
       <article class="taller pronto">
@@ -667,10 +702,10 @@
     <div style="margin-top:6px;font-size:13px">Metodología centrada en el razonamiento: cada punto integra preguntas de argumentación (“defiende tu conclusión”) y un recuadro de tutor socrático (TIP-IA) que guía sin resolver.</div>
     <div style="margin-top:6px">Bogotá, Colombia · Proyecto iniciado en julio de 2026</div>
     <div style="margin-top:10px">
-      <a href="https://github.com/brfisica/fisica-br" target="_blank">Repositorio en GitHub</a> ·
-      <a href="https://github.com/brfisica/fisica-br/issues/new" target="_blank">Reportar un error o sugerir mejora</a>
+      <a href="https://github.com/brfisica/fisica-br" target="_blank" rel="noopener">Repositorio en GitHub</a> ·
+      <a href="https://github.com/brfisica/fisica-br/issues/new" target="_blank" rel="noopener">Reportar un error o sugerir mejora</a>
     </div>
-    <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a> · Última actualización: agosto de 2026</div>
+    <div class="lic">© 2026 · Licencia CC BY-NC-SA 4.0 · <a href="LICENSE">Ver licencia</a> · Última actualización: octubre de 2026</div>
   </div>
 </footer>
 
@@ -684,12 +719,19 @@ function alternarTema(){
   document.getElementById('btn-tema').textContent=osc?'☀️ Modo claro':'🌙 Modo oscuro';
   try{ localStorage.setItem('tema-br', osc?'oscuro':'claro'); }catch(e){}
 }
-try{
-  if(localStorage.getItem('tema-br')==='oscuro'){
+(function(){
+  var guardado=null;
+  try{ guardado=localStorage.getItem('tema-br'); }catch(e){}
+  var sistemaOscuro=window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if(guardado==='oscuro' || (guardado===null && sistemaOscuro)){
     document.body.classList.add('oscuro');
     document.getElementById('btn-tema').textContent='☀️ Modo claro';
   }
-}catch(e){}
+})();
+/* Etiquetas "Nuevo": desaparecen solas después de la fecha indicada en data-hasta */
+document.querySelectorAll('[data-hasta]').forEach(function(el){
+  if(new Date() > new Date(el.getAttribute('data-hasta')+'T23:59:59')) el.remove();
+});
 
 /* ===== Filtros por chip (curso + tipo), combinados con el buscador ===== */
 var _filtroCurso='todos', _filtroTipo='todos';
