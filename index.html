@@ -141,6 +141,29 @@
   .curso-dibujo{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:170px;height:96px;opacity:.55;pointer-events:none}
   .curso-banda .curso-cab,.curso-banda p,.curso-n{position:relative;margin-right:190px}
   @media (max-width:720px){.curso-dibujo{display:none}.curso-banda .curso-cab,.curso-banda p,.curso-n{margin-right:0}.curso-banda{padding:18px 16px 16px 26px}.curso-banda::before{width:7px}}
+  .ruta{margin:-10px 0 26px}
+  .ruta summary{cursor:pointer;font-weight:700;font-size:15px;padding:6px 0;list-style:none}
+  .ruta summary::-webkit-details-marker{display:none}
+  .ruta summary::before{content:"▸";display:inline-block;margin-right:8px;color:var(--acento);transition:transform .2s}
+  .curso.mec .ruta summary::before{color:var(--acento-2)}
+  .ruta[open] summary::before{transform:rotate(90deg)}
+  .ruta-pista{font-weight:400;color:var(--tenue);font-size:13.5px}
+  .ruta-lienzo{overflow-x:auto;padding:6px 0 4px}
+  .ruta-lienzo svg{display:block;max-width:100%;height:auto}
+  @media (max-width:720px){.ruta-lienzo svg{max-width:none;width:auto}}
+  .ruta-lienzo .nodo rect{fill:var(--papel-2);stroke:var(--linea);stroke-width:1.5;transition:stroke .15s}
+  .ruta-lienzo .nodo text{fill:var(--tinta);font-size:14px;font-family:inherit}
+  .ruta-lienzo .nodo.aplicada rect{stroke:#c9962b;stroke-dasharray:4 3}
+  .ruta-lienzo .nodo.repaso rect{stroke:#3a5bc0;stroke-dasharray:4 3}
+  .ruta-lienzo .nodo.raiz rect{stroke:var(--acento);stroke-width:2.5}
+  .curso.mec .ruta-lienzo .nodo.raiz rect{stroke:var(--acento-2)}
+  .ruta-lienzo a.nodo:hover rect,.ruta-lienzo a.nodo:focus rect{stroke:var(--acento);stroke-width:2.5}
+  .curso.mec .ruta-lienzo a.nodo:hover rect,.curso.mec .ruta-lienzo a.nodo:focus rect{stroke:var(--acento-2)}
+  .ruta-lienzo .arista{fill:none;stroke:var(--tenue);stroke-width:1.4;opacity:.7}
+  .ruta-lienzo .punta{fill:var(--tenue);opacity:.7}
+  .taller{scroll-margin-top:24px}
+  .taller:target{outline:3px solid var(--acento);outline-offset:3px}
+  .curso.mec .taller:target{outline-color:var(--acento-2)}
   .curso-cab{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
   .curso-num{
     font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:13px;
@@ -512,9 +535,13 @@
     <p class="curso-desc">Cinemática y dinámica con contextos de ingeniería colombiana. g&nbsp;=&nbsp;9,81&nbsp;m/s².</p>
       <span class="curso-n"></span>
     </div>
+    <details class="ruta" open>
+      <summary>Mapa de ruta <span class="ruta-pista">· cada flecha lleva al taller que conviene hacer después; toca uno para ir a su tarjeta · borde punteado: aplicación (ámbar) o repaso (azul)</span></summary>
+      <div class="ruta-lienzo"></div>
+    </details>
     <div class="rejilla">
 
-      <article class="taller">
+      <article class="taller" id="t-unidades" data-corto="Unidades" data-antes="">
         <img class="mini" src="Taller_Unidades_Medidas.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Unidades, Medidas y Reporte">
         <span class="cap">Cap. 2 — Unidades y medidas</span>
         <h3>Unidades, Medidas y Reporte</h3>
@@ -523,7 +550,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Unidades_Medidas.ipynb">Abrir taller<span class="sr"> Unidades, Medidas y Reporte (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Unidades_Medidas.ipynb">o en Colab<span class="sr"> — Unidades, Medidas y Reporte, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-errores" data-corto="Incertidumbre" data-antes="unidades">
         <img class="mini" src="Taller_Errores_Incertidumbre.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Errores e Incertidumbre">
         <span class="cap">Cap. 2 — Incertidumbre</span>
         <h3>Errores e Incertidumbre</h3>
@@ -532,7 +559,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Errores_Incertidumbre.ipynb">Abrir taller<span class="sr"> Errores e Incertidumbre (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Errores_Incertidumbre.ipynb">o en Colab<span class="sr"> — Errores e Incertidumbre, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-mru" data-corto="MRU / MRUA" data-antes="unidades">
         <img class="mini" src="Taller_MRU_MRUA.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Movimiento Rectilíneo (MRU/MRUA)">
         <span class="cap">Cap. 4 — Cinemática 1D</span>
         <h3>Movimiento Rectilíneo (MRU/MRUA)</h3>
@@ -541,7 +568,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_MRUA.ipynb">Abrir taller<span class="sr"> Movimiento Rectilíneo (MRU/MRUA) (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_MRU_MRUA.ipynb">o en Colab<span class="sr"> — Movimiento Rectilíneo (MRU/MRUA), alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller aplicada">
+      <article class="taller aplicada" id="t-sismos" data-corto="Ondas sísmicas" data-antes="mru">
         <img class="mini" src="Taller_MRU_Sismos.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller MRU y Ondas Sísmicas">
         <span class="cap">Aplicación — MRU</span>
         <h3>MRU y Ondas Sísmicas</h3>
@@ -550,7 +577,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_MRU_Sismos.ipynb">Abrir taller<span class="sr"> MRU y Ondas Sísmicas (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_MRU_Sismos.ipynb">o en Colab<span class="sr"> — MRU y Ondas Sísmicas, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-caida" data-corto="Caída libre" data-antes="mru">
         <img class="mini" src="Taller_Caida_Libre.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Movimiento bajo la Gravedad">
         <span class="cap">Cap. 4 — Caída libre</span>
         <h3>Movimiento bajo la Gravedad</h3>
@@ -559,7 +586,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Caida_Libre.ipynb">Abrir taller<span class="sr"> Movimiento bajo la Gravedad (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Caida_Libre.ipynb">o en Colab<span class="sr"> — Movimiento bajo la Gravedad, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-proyectiles" data-corto="Proyectiles" data-antes="caida vectores">
         <img class="mini" src="Taller_Proyectiles.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Movimiento de Proyectiles">
         <span class="cap">Cap. 5 — Movimiento 2D</span>
         <h3>Movimiento de Proyectiles</h3>
@@ -568,7 +595,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Proyectiles.ipynb">Abrir taller<span class="sr"> Movimiento de Proyectiles (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Proyectiles.ipynb">o en Colab<span class="sr"> — Movimiento de Proyectiles, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-vectores" data-corto="Vectores" data-antes="unidades">
         <img class="mini" src="Taller_Vectores.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Vectores y Vector Resultante">
         <span class="cap">Cap. 5 — Vectores</span>
         <h3>Vectores y Vector Resultante</h3>
@@ -577,7 +604,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Vectores.ipynb">Abrir taller<span class="sr"> Vectores y Vector Resultante (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Vectores.ipynb">o en Colab<span class="sr"> — Vectores y Vector Resultante, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-newton" data-corto="Leyes de Newton" data-antes="vectores">
         <img class="mini" src="Taller_Leyes_Newton.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Leyes de Newton">
         <span class="cap">Cap. 6 — Dinámica</span>
         <h3>Leyes de Newton</h3>
@@ -586,7 +613,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Leyes_Newton.ipynb">Abrir taller<span class="sr"> Leyes de Newton (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Leyes_Newton.ipynb">o en Colab<span class="sr"> — Leyes de Newton, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-energia" data-corto="Energía" data-antes="newton">
         <img class="mini" src="Taller_Trabajo_Energia.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Trabajo, Energía y Potencia">
         <span class="cap">Cap. 7 — Energía</span>
         <h3>Trabajo, Energía y Potencia</h3>
@@ -595,7 +622,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Trabajo_Energia.ipynb">Abrir taller<span class="sr"> Trabajo, Energía y Potencia (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Trabajo_Energia.ipynb">o en Colab<span class="sr"> — Trabajo, Energía y Potencia, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-momentum" data-corto="Momentum" data-antes="newton">
         <img class="mini" src="Taller_Momentum_Impulso.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Cantidad de Movimiento e Impulso">
         <span class="cap">Cap. 8 — Momentum</span>
         <h3>Cantidad de Movimiento e Impulso</h3>
@@ -604,7 +631,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Momentum_Impulso.ipynb">Abrir taller<span class="sr"> Cantidad de Movimiento e Impulso (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Momentum_Impulso.ipynb">o en Colab<span class="sr"> — Cantidad de Movimiento e Impulso, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-rotacion" data-corto="Rotación" data-antes="energia">
         <img class="mini" src="Taller_Rotacional.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Cinemática y Dinámica Rotacional">
         <span class="cap">Cap. 9 — Rotación</span>
         <h3>Cinemática y Dinámica Rotacional</h3>
@@ -613,7 +640,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Rotacional.ipynb">Abrir taller<span class="sr"> Cinemática y Dinámica Rotacional (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Rotacional.ipynb">o en Colab<span class="sr"> — Cinemática y Dinámica Rotacional, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-oscilaciones" data-corto="Oscilaciones" data-antes="energia">
         <img class="mini" src="Taller_Oscilaciones.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Movimiento Oscilatorio (MAS)">
         <span class="cap">Cap. 10 — Oscilaciones</span>
         <h3>Movimiento Oscilatorio (MAS)</h3>
@@ -622,7 +649,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Oscilaciones.ipynb">Abrir taller<span class="sr"> Movimiento Oscilatorio (MAS) (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Oscilaciones.ipynb">o en Colab<span class="sr"> — Movimiento Oscilatorio (MAS), alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-fluidos" data-corto="Fluidos" data-antes="newton">
         <img class="mini" src="Taller_Fluidos.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Mecánica de Fluidos">
         <span class="cap">Cap. 11 — Fluidos</span>
         <h3>Mecánica de Fluidos</h3>
@@ -631,7 +658,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fluidos.ipynb">Abrir taller<span class="sr"> Mecánica de Fluidos (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fluidos.ipynb">o en Colab<span class="sr"> — Mecánica de Fluidos, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller repaso">
+      <article class="taller repaso" id="t-conversion" data-corto="Repaso 1D" data-antes="mru">
         <img class="mini" src="Taller_Conversion_Cinematica.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Conversión de Unidades y Cinemática 1D">
         <span class="cap">Repaso — Cinemática 1D</span>
         <h3>Conversión de Unidades y Cinemática 1D</h3>
@@ -659,9 +686,13 @@
     <p class="curso-desc">Campos, potencial y aplicaciones en ingeniería eléctrica, electrónica y civil.</p>
       <span class="curso-n"></span>
     </div>
+    <details class="ruta" open>
+      <summary>Mapa de ruta <span class="ruta-pista">· cada flecha lleva al taller que conviene hacer después; toca uno para ir a su tarjeta · borde punteado: aplicación (ámbar) o repaso (azul)</span></summary>
+      <div class="ruta-lienzo"></div>
+    </details>
     <div class="rejilla">
 
-      <article class="taller">
+      <article class="taller" id="t-coulomb" data-corto="Coulomb" data-antes="">
         <img class="mini" src="Taller_Coulomb_Campo.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Carga, Coulomb y Campo Eléctrico">
         <span class="cap">Cap. 1 — Coulomb</span>
         <h3>Carga, Coulomb y Campo Eléctrico</h3>
@@ -670,7 +701,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Coulomb_Campo.ipynb">Abrir taller<span class="sr"> Carga, Coulomb y Campo Eléctrico (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Coulomb_Campo.ipynb">o en Colab<span class="sr"> — Carga, Coulomb y Campo Eléctrico, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller aplicada">
+      <article class="taller aplicada" id="t-cables" data-corto="Cables cargados" data-antes="coulomb">
         <img class="mini" src="Taller_Cables_Campo.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Campo Eléctrico y Cinemática de Cargas">
         <span class="cap">Aplicación — Campo Eléctrico</span>
         <h3>Campo Eléctrico y Cinemática de Cargas</h3>
@@ -679,7 +710,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Cables_Campo.ipynb">Abrir taller<span class="sr"> Campo Eléctrico y Cinemática de Cargas (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Cables_Campo.ipynb">o en Colab<span class="sr"> — Campo Eléctrico y Cinemática de Cargas, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-gauss" data-corto="Gauss" data-antes="coulomb">
         <img class="mini" src="Taller_Ley_de_Gauss_Interactivo_v2_1.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Ley de Gauss">
         <span class="cap">Cap. 1 — Ley de Gauss</span>
         <h3>Ley de Gauss</h3>
@@ -688,7 +719,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_de_Gauss_Interactivo_v2+%281%29.ipynb">Abrir taller<span class="sr"> Ley de Gauss (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ley_de_Gauss_Interactivo_v2%20%281%29.ipynb">o en Colab<span class="sr"> — Ley de Gauss, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-potencial" data-corto="Potencial" data-antes="coulomb">
         <img class="mini" src="Taller_Potencial_Electrico.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Potencial Eléctrico">
         <span class="cap">Cap. 2 — Potencial</span>
         <h3>Potencial Eléctrico</h3>
@@ -697,7 +728,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Potencial_Electrico.ipynb">Abrir taller<span class="sr"> Potencial Eléctrico (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Potencial_Electrico.ipynb">o en Colab<span class="sr"> — Potencial Eléctrico, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-capacitores" data-corto="Capacitores" data-antes="potencial">
         <img class="mini" src="Taller_Capacitores.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Capacitores y Capacitancia">
         <span class="cap">Cap. 3 — Capacitancia</span>
         <h3>Capacitores y Capacitancia</h3>
@@ -706,7 +737,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Capacitores.ipynb">Abrir taller<span class="sr"> Capacitores y Capacitancia (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Capacitores.ipynb">o en Colab<span class="sr"> — Capacitores y Capacitancia, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-corriente" data-corto="Corriente" data-antes="potencial">
         <img class="mini" src="Taller_Corriente_Resistencia.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Corriente y Resistencia">
         <span class="cap">Cap. 4 — Corriente</span>
         <h3>Corriente y Resistencia</h3>
@@ -715,7 +746,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Corriente_Resistencia.ipynb">Abrir taller<span class="sr"> Corriente y Resistencia (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Corriente_Resistencia.ipynb">o en Colab<span class="sr"> — Corriente y Resistencia, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-circuitos" data-corto="Circuitos DC" data-antes="corriente">
         <img class="mini" src="Taller_Circuitos_DC.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Circuitos de Corriente Directa">
         <span class="cap">Cap. 5 — Circuitos DC</span>
         <h3>Circuitos de Corriente Directa</h3>
@@ -724,7 +755,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Circuitos_DC.ipynb">Abrir taller<span class="sr"> Circuitos de Corriente Directa (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Circuitos_DC.ipynb">o en Colab<span class="sr"> — Circuitos de Corriente Directa, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-ftm" data-corto="Fuerza y torque" data-antes="corriente">
         <span class="badge-tipo t-nuevo" data-hasta="2026-12-15">Nuevo</span>
         <img class="mini" src="Taller_Fuerza_Torque_Magnetico.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Fuerza y Torque Magnéticos">
         <span class="cap">Cap. 6 — Campo magnético y fuerzas</span>
@@ -734,7 +765,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fuerza_Torque_Magnetico.ipynb">Abrir taller<span class="sr"> Fuerza y Torque Magnéticos (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fuerza_Torque_Magnetico.ipynb">o en Colab<span class="sr"> — Fuerza y Torque Magnéticos, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-fuentes" data-corto="Fuentes de B" data-antes="ftm">
         <img class="mini" src="Taller_Campo_Magnetico.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Fuentes del Campo Magnético">
         <span class="cap">Cap. 7 — Fuentes del campo</span>
         <h3>Fuentes del Campo Magnético</h3>
@@ -743,7 +774,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Campo_Magnetico.ipynb">Abrir taller<span class="sr"> Fuentes del Campo Magnético (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Campo_Magnetico.ipynb">o en Colab<span class="sr"> — Fuentes del Campo Magnético, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-ampere" data-corto="Ampère" data-antes="fuentes">
         <img class="mini" src="Taller_Ley_Ampere.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Ley de Ampère">
         <span class="cap">Cap. 7 — Ley de Ampère</span>
         <h3>Ley de Ampère</h3>
@@ -752,7 +783,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_Ampere.ipynb">Abrir taller<span class="sr"> Ley de Ampère (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ley_Ampere.ipynb">o en Colab<span class="sr"> — Ley de Ampère, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-induccion" data-corto="Inducción" data-antes="ampere">
         <img class="mini" src="Taller_Induccion.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Inducción Electromagnética">
         <span class="cap">Cap. 8 — Inducción</span>
         <h3>Inducción Electromagnética</h3>
@@ -761,7 +792,7 @@
         <div class="acciones"><a class="abrir" target="_blank" rel="noopener" href="https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Induccion.ipynb">Abrir taller<span class="sr"> Inducción Electromagnética (se abre en una pestaña nueva)</span></a><a class="alt" target="_blank" rel="noopener" href="https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion.ipynb">o en Colab<span class="sr"> — Inducción Electromagnética, alternativa si el taller no carga</span></a></div>
       </article>
 
-      <article class="taller">
+      <article class="taller" id="t-maxwell" data-corto="Maxwell" data-antes="induccion">
         <img class="mini" src="Taller_Maxwell.webp" width="280" height="150" loading="lazy" decoding="async" alt="Esquema del taller Ecuaciones de Maxwell">
         <span class="cap">Cap. 9 — Maxwell</span>
         <h3>Ecuaciones de Maxwell</h3>
@@ -882,6 +913,43 @@ document.querySelectorAll('section.curso').forEach(function(sec){
   var n=sec.querySelectorAll('article.taller:not(.pronto)').length, c=sec.querySelector('.curso-n');
   if(c) c.textContent=n+' talleres interactivos';
 });
+</script>
+<script>
+/* Mapa de ruta: se arma solo a partir de data-antes de cada tarjeta */
+(function(){
+  var NS='http://www.w3.org/2000/svg', W=116, H=36, CX=134, CY=50, M=8;
+  function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+  document.querySelectorAll('section.curso').forEach(function(sec){
+    var lienzo=sec.querySelector('.ruta-lienzo'); if(!lienzo) return;
+    var nodos=[].slice.call(sec.querySelectorAll('article.taller[data-corto]')).map(function(a,k){
+      return {id:a.id.slice(2),txt:a.getAttribute('data-corto'),antes:(a.getAttribute('data-antes')||'').split(' ').filter(Boolean),
+              tipo:a.classList.contains('aplicada')?'aplicada':a.classList.contains('repaso')?'repaso':'',orden:k};});
+    var por={}; nodos.forEach(function(n){por[n.id]=n});
+    function nivel(n){ if(n.niv!=null) return n.niv; var m=-1; n.antes.forEach(function(p){ if(por[p]) m=Math.max(m,nivel(por[p])); }); return n.niv=m+1; }
+    nodos.forEach(nivel);
+    var cols=[]; nodos.forEach(function(n){(cols[n.niv]=cols[n.niv]||[]).push(n)});
+    var filas=0;
+    cols.forEach(function(c,i){
+      c.forEach(function(n){ var ps=n.antes.filter(function(p){return por[p]}).map(function(p){return por[p].fila});
+        n.bari=ps.length?ps.reduce(function(a,b){return a+b},0)/ps.length:0; });
+      c.sort(function(a,b){return a.bari-b.bari||a.orden-b.orden});
+      var prev=-1; c.forEach(function(n){ n.fila=Math.max(prev+1,Math.round(n.bari-(c.length-1)/2*(i?0:1))); prev=n.fila; filas=Math.max(filas,n.fila+1); });
+    });
+    var ancho=cols.length*CX-(CX-W)+2*M, alto=filas*CY-(CY-H)+2*M, g='';
+    function X(n){return M+n.niv*CX} function Y(n){return M+n.fila*CY}
+    nodos.forEach(function(n){ n.antes.forEach(function(p){ p=por[p]; if(!p) return;
+      var x1=X(p)+W, y1=Y(p)+H/2, x2=X(n)-6, y2=Y(n)+H/2, d=(CX-W)/2+4;
+      if(n.niv-p.niv>1){ /* salta columnas: va por el pasillo entre filas para no pasar por detrás de otra tarjeta */
+        var yp=p.fila>n.fila?Y(n)+H+(CY-H)/2:Y(n)-(CY-H)/2, xa=x1+(CX-W)/2, xb=X(n)-(CX-W)/2-6;
+        g+='<path class="arista" d="M'+x1+' '+y1+' C'+(xa+6)+' '+y1+' '+(xa-6)+' '+yp+' '+(xa+12)+' '+yp+' L'+(xb-12)+' '+yp+' C'+(xb+6)+' '+yp+' '+(xb-6)+' '+y2+' '+x2+' '+y2+'"/>';
+      } else g+='<path class="arista" d="M'+x1+' '+y1+' C'+(x1+d)+' '+y1+' '+(x2-d)+' '+y2+' '+x2+' '+y2+'"/>';
+      g+='<path class="punta" d="M'+(x2+6)+' '+y2+' l-7 -4 v8 z"/>'; }); });
+    nodos.forEach(function(n){
+      g+='<a class="nodo '+n.tipo+(n.niv?'':' raiz')+'" href="#t-'+n.id+'"><title>'+esc(n.txt)+'</title><rect x="'+X(n)+'" y="'+Y(n)+'" width="'+W+'" height="'+H+'" rx="8"/>'+
+         '<text x="'+(X(n)+W/2)+'" y="'+(Y(n)+H/2+5)+'" text-anchor="middle">'+esc(n.txt)+'</text></a>';});
+    lienzo.innerHTML='<svg xmlns="'+NS+'" viewBox="0 0 '+ancho+' '+alto+'" width="'+ancho+'" height="'+alto+'" role="img" aria-label="Mapa de ruta de '+esc(sec.querySelector('h2').textContent)+'">'+g+'</svg>';
+  });
+})();
 </script>
 </body>
 </html>
