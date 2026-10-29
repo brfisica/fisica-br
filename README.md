@@ -8,7 +8,7 @@ Binder), sin instalar nada ni crear cuenta.
 
 **Autores:** Juan David Betancur Ríos (docente de física para ingeniería) y
 Nora Yamile Rojas Cataño (aporte pedagógico y metodología de evaluación).
-Bogotá, Colombia · proyecto iniciado en julio de 2026 · 27 talleres a octubre de 2026.
+Bogotá, Colombia · proyecto iniciado en julio de 2026 · 28 talleres a octubre de 2026.
 
 ## Qué trae cada taller
 
@@ -25,7 +25,7 @@ Bogotá, Colombia · proyecto iniciado en julio de 2026 · 27 talleres a octubre
 
 Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 
-## Física Mecánica (15 talleres)
+## Física Mecánica (16 talleres)
 
 | Capítulo | Taller | Puntos | Antes conviene | Enlaces |
 |---|---|---|---|---|
@@ -41,6 +41,7 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 | Cap. 7: Energía | Trabajo, Energía y Potencia | 5 | Leyes de Newton | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Trabajo_Energia.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Trabajo_Energia.ipynb) |
 | Cap. 8: Momentum | Cantidad de Movimiento e Impulso | 5 | Leyes de Newton | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Momentum_Impulso.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Momentum_Impulso.ipynb) |
 | Cap. 9: Rotación | Cinemática y Dinámica Rotacional | 5 | Trabajo y Energía | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Rotacional.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Rotacional.ipynb) |
+| Cap. 9: Torque y equilibrio | Momento de Torsión (Torque) y Equilibrio | 4 | Dinámica Rotacional | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Torque.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Torque.ipynb) |
 | Cap. 10: Oscilaciones | Movimiento Oscilatorio (MAS) | 5 | Trabajo y Energía | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Oscilaciones.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Oscilaciones.ipynb) |
 | Cap. 11: Fluidos | Mecánica de Fluidos | 5 | Leyes de Newton | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fluidos.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fluidos.ipynb) |
 | Repaso: Cinemática 1D | Conversión de Unidades y Cinemática 1D | 3 | Movimiento Rectilíneo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Conversion_Cinematica.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Conversion_Cinematica.ipynb) |
