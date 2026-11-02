@@ -8,7 +8,7 @@ Binder), sin instalar nada ni crear cuenta.
 
 **Autores:** Juan David Betancur Ríos (docente de física para ingeniería) y
 Nora Yamile Rojas Cataño (aporte pedagógico y metodología de evaluación).
-Bogotá, Colombia · proyecto iniciado en julio de 2026 · 28 talleres a octubre de 2026.
+Bogotá, Colombia · proyecto iniciado en julio de 2026 · 29 talleres a noviembre de 2026.
 
 ## Qué trae cada taller
 
@@ -46,7 +46,7 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 | Cap. 11: Fluidos | Mecánica de Fluidos | 5 | Leyes de Newton | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fluidos.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fluidos.ipynb) |
 | Repaso: Cinemática 1D | Conversión de Unidades y Cinemática 1D | 3 | Movimiento Rectilíneo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Conversion_Cinematica.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Conversion_Cinematica.ipynb) |
 
-## Electricidad y Magnetismo (12 talleres)
+## Electricidad y Magnetismo (13 talleres)
 
 | Capítulo | Taller | Puntos | Antes conviene | Enlaces |
 |---|---|---|---|---|
@@ -60,8 +60,9 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 | Cap. 6: Campo magnético y fuerzas | Fuerza y Torque Magnéticos | 6 | Corriente y Resistencia | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Fuerza_Torque_Magnetico.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fuerza_Torque_Magnetico.ipynb) |
 | Cap. 7: Fuentes del campo | Fuentes del Campo Magnético | 4 | Fuerza y Torque | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Campo_Magnetico.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Campo_Magnetico.ipynb) |
 | Cap. 7: Ley de Ampère | Ley de Ampère | 5 | Fuentes del Campo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Ley_Ampere.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ley_Ampere.ipynb) |
-| Cap. 8: Inducción | Inducción Electromagnética | 7 | Ley de Ampère | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Induccion.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion.ipynb) |
-| Cap. 9: Maxwell | Ecuaciones de Maxwell | 5 | Inducción | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Maxwell.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Maxwell.ipynb) |
+| Cap. 8: Inducción | Inducción Electromagnética I | 6 | Ley de Ampère | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Induccion.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion.ipynb) |
+| Cap. 8: Inducción | Inducción II: Generadores y Sensores | 3 | Inducción I | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Induccion_II.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion_II.ipynb) |
+| Cap. 9: Maxwell | Ecuaciones de Maxwell | 5 | Inducción II | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/HEAD?urlpath=voila%2Frender%2FTaller_Maxwell.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Maxwell.ipynb) |
 
 > La primera apertura de un taller puede tardar 1–2 minutos mientras Binder prepara el entorno.
 > Si no carga, el enlace **Colab** es la alternativa (requiere cuenta de Google): allí se
