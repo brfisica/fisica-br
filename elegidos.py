@@ -2,7 +2,7 @@
 ELEGIDO = {
  'Taller_Cables_Campo': 4, 'Taller_Caida_Libre': 2, 'Taller_Campo_Magnetico': 4, 'Taller_Capacitores': 5,
  'Taller_Circuitos_DC': 2, 'Taller_Conversion_Cinematica': 2, 'Taller_Corriente_Resistencia': 1,
- 'Taller_Coulomb_Campo': 4, 'Taller_Errores_Incertidumbre': 1, 'Taller_Fluidos': 4,
+ 'Taller_Corriente_Alterna': 4, 'Taller_Coulomb_Campo': 4, 'Taller_Errores_Incertidumbre': 1, 'Taller_Fluidos': 4,
  'Taller_Fuerza_Torque_Magnetico': 3, 'Taller_Induccion': 6, 'Taller_Induccion_II': 2, 'Taller_Ley_Ampere': 2,
  'Taller_Ley_de_Gauss': 3, 'Taller_Leyes_Newton': 2, 'Taller_MRU_MRUA': 4,
  'Taller_MRU_Sismos': 3, 'Taller_Maxwell': 5, 'Taller_Momentum_Impulso': 3, 'Taller_Oscilaciones': 5,
