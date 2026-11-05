@@ -8,7 +8,7 @@ Binder), sin instalar nada ni crear cuenta.
 
 **Autores:** Juan David Betancur Ríos (docente de física para ingeniería) y
 Nora Yamile Rojas Cataño (aporte pedagógico y metodología de evaluación).
-Bogotá, Colombia · proyecto iniciado en julio de 2026 · 29 talleres a noviembre de 2026.
+Bogotá, Colombia · proyecto iniciado en julio de 2026 · 30 talleres a noviembre de 2026.
 
 ## Qué trae cada taller
 
@@ -62,6 +62,7 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 | Cap. 7: Ley de Ampère | Ley de Ampère | 5 | Fuentes del Campo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Ley_Ampere.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ley_Ampere.ipynb) |
 | Cap. 8: Inducción | Inducción Electromagnética I | 6 | Ley de Ampère | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Induccion.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion.ipynb) |
 | Cap. 8: Inducción | Inducción II: Generadores y Sensores | 4 | Inducción I | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Induccion_II.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion_II.ipynb) |
+| Refuerzo: Cap. 8 (Inducción) | Corriente Alterna y Factor de Potencia | 4 | Inducción II | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Corriente_Alterna.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Corriente_Alterna.ipynb) |
 | Cap. 9: Maxwell | Ecuaciones de Maxwell | 5 | Inducción II | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Maxwell.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Maxwell.ipynb) |
 
 > La primera apertura de un taller puede tardar 1–2 minutos mientras Binder prepara el entorno.
