@@ -6,6 +6,6 @@ ELEGIDO = {
  'Taller_Fuerza_Torque_Magnetico': 3, 'Taller_Induccion': 6, 'Taller_Induccion_II': 2, 'Taller_Ley_Ampere': 2,
  'Taller_Ley_de_Gauss': 3, 'Taller_Leyes_Newton': 2, 'Taller_MRU_MRUA': 4,
  'Taller_MRU_Sismos': 3, 'Taller_Maxwell': 5, 'Taller_Momentum_Impulso': 3, 'Taller_Oscilaciones': 5,
- 'Taller_Potencial_Electrico': 1, 'Taller_Proyectiles': 3, 'Taller_Rotacional': 5,
+ 'Taller_Potencial_Electrico': 1, 'Taller_Proyectiles': 3, 'Taller_Puesta_Tierra': 1, 'Taller_Rotacional': 5,
  'Taller_Torque': 1, 'Taller_Trabajo_Energia': 3, 'Taller_Unidades_Medidas': 3, 'Taller_Vectores': 2,
 }
