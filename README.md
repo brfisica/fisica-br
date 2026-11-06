@@ -8,7 +8,7 @@ Binder), sin instalar nada ni crear cuenta.
 
 **Autores:** Juan David Betancur Ríos (docente de física para ingeniería) y
 Nora Yamile Rojas Cataño (aporte pedagógico y metodología de evaluación).
-Bogotá, Colombia · proyecto iniciado en julio de 2026 · 31 talleres a noviembre de 2026.
+Bogotá, Colombia · proyecto iniciado en julio de 2026 · 32 talleres a noviembre de 2026.
 
 ## Qué trae cada taller
 
@@ -43,6 +43,7 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 | Cap. 9: Rotación | Cinemática y Dinámica Rotacional | 5 | Trabajo y Energía | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Rotacional.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Rotacional.ipynb) |
 | Refuerzo: Cap. 9 (Rotación) | Momento de Torsión (Torque) y Equilibrio | 4 | Cinemática y Dinámica Rotacional | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Torque.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Torque.ipynb) |
 | Cap. 10: Oscilaciones | Movimiento Oscilatorio (MAS) | 5 | Trabajo y Energía | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Oscilaciones.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Oscilaciones.ipynb) |
+| Refuerzo: Cap. 10 (Oscilaciones) | Oscilaciones Amortiguadas y Resonancia | 4 | Movimiento Oscilatorio (MAS) | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Oscilaciones_Amortiguadas.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Oscilaciones_Amortiguadas.ipynb) |
 | Cap. 11: Fluidos | Mecánica de Fluidos | 5 | Leyes de Newton | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Fluidos.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Fluidos.ipynb) |
 | Repaso: Cinemática 1D | Conversión de Unidades y Cinemática 1D | 3 | Movimiento Rectilíneo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Conversion_Cinematica.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Conversion_Cinematica.ipynb) |
 
