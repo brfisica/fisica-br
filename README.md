@@ -8,7 +8,7 @@ Binder), sin instalar nada ni crear cuenta.
 
 **Autores:** Juan David Betancur Ríos (docente de física para ingeniería) y
 Nora Yamile Rojas Cataño (aporte pedagógico y metodología de evaluación).
-Bogotá, Colombia · proyecto iniciado en julio de 2026 · 35 talleres a noviembre de 2026.
+Bogotá, Colombia · proyecto iniciado en julio de 2026 · 36 talleres a noviembre de 2026.
 
 ## Qué trae cada taller
 
@@ -68,7 +68,8 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 | Cap. 8: Inducción | Inducción II: Generadores y Sensores | 4 | Inducción I | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Induccion_II.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Induccion_II.ipynb) |
 | Refuerzo: Cap. 8 (Inducción) | Inductancia en Circuitos RL y LC | 4 | Inducción I; Circuitos DC | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Inductancia_RL_LC.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Inductancia_RL_LC.ipynb) |
 | Refuerzo: Cap. 8 (Inducción) | Corriente Alterna y Factor de Potencia | 4 | Inducción II | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Corriente_Alterna.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Corriente_Alterna.ipynb) |
-| Cap. 9: Maxwell | Ecuaciones de Maxwell | 5 | Inducción II | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Maxwell.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Maxwell.ipynb) |
+| Cap. 9: Maxwell | Maxwell I: De las Ecuaciones a la Onda | 4 | Inducción II | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Maxwell.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Maxwell.ipynb) |
+| Cap. 9: Ondas | Ondas Electromagnéticas II: Energía, Luz y Espectro | 4 | Maxwell I | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Ondas_EM_II.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ondas_EM_II.ipynb) |
 
 > La primera apertura de un taller puede tardar 1–2 minutos mientras Binder prepara el entorno.
 > Si no carga, el enlace **Colab** es la alternativa (requiere cuenta de Google): allí se
