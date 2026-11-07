@@ -8,7 +8,7 @@ Binder), sin instalar nada ni crear cuenta.
 
 **Autores:** Juan David Betancur Ríos (docente de física para ingeniería) y
 Nora Yamile Rojas Cataño (aporte pedagógico y metodología de evaluación).
-Bogotá, Colombia · proyecto iniciado en julio de 2026 · 32 talleres a noviembre de 2026.
+Bogotá, Colombia · proyecto iniciado en julio de 2026 · 33 talleres a noviembre de 2026.
 
 ## Qué trae cada taller
 
@@ -31,6 +31,7 @@ Convenciones: tres cifras significativas, coma decimal y unidades del SI.
 |---|---|---|---|---|
 | Cap. 2: Unidades y medidas | Unidades, Medidas y Reporte | 5 | — | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Unidades_Medidas.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Unidades_Medidas.ipynb) |
 | Cap. 2: Incertidumbre | Errores e Incertidumbre | 5 | Unidades y Medidas | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Errores_Incertidumbre.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Errores_Incertidumbre.ipynb) |
+| Refuerzo: Cap. 3 (Análisis de datos) | Ajuste de Datos y Regresión | 4 | Errores e Incertidumbre | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Ajuste_Datos.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Ajuste_Datos.ipynb) |
 | Cap. 4: Cinemática 1D | Movimiento Rectilíneo (MRU/MRUA) | 4 | Unidades y Medidas | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_MRU_MRUA.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_MRU_MRUA.ipynb) |
 | Aplicación: MRU | MRU y Ondas Sísmicas | 6 | Movimiento Rectilíneo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_MRU_Sismos.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_MRU_Sismos.ipynb) |
 | Cap. 4: Caída libre | Movimiento bajo la Gravedad | 4 | Movimiento Rectilíneo | [Abrir](https://mybinder.org/v2/gh/brfisica/fisica-br/entorno?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252Fbrfisica%252Ffisica-br%26branch%3Dmain%26urlpath%3Dvoila%252Frender%252Ffisica-br%252FTaller_Caida_Libre.ipynb) · [Colab](https://colab.research.google.com/github/brfisica/fisica-br/blob/main/Taller_Caida_Libre.ipynb) |
