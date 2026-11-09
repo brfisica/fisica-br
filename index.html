@@ -1090,6 +1090,12 @@ document.querySelectorAll('section.curso').forEach(function(sec){
     var cruces={};
     nodos.forEach(function(n){ n.antes.forEach(function(p){ p=por[p]; if(!p) return;
       var x1=X(p)+W, y1=Y(p)+H/2, x2=X(n)-6, y2=Y(n)+H/2, d=(CX-W)/2+4;
+      if(n.b>p.b && n.col>0 && n.fila===fmin[n.b]){ /* cambia de banda hacia una tarjeta de la primera fila: entra por arriba, sin cruzar otras flechas */
+        var k0=cruces[n.b]=(cruces[n.b]||0)+1, yg0=bandaY[n.b]-BG/2+(k0-1)*7-4, xa0=x1+(CX-W)/2-4*(k0-1), xt=X(n)+W/2, yt=Y(n)-6;
+        g+='<path class="arista" d="M'+x1+' '+y1+' H'+(xa0-6)+' Q'+xa0+' '+y1+' '+xa0+' '+(y1+6)+' V'+(yg0-6)+' Q'+xa0+' '+yg0+' '+(xa0+(xt>xa0?6:-6))+' '+yg0+
+           ' H'+(xt+(xt>xa0?-6:6))+' Q'+xt+' '+yg0+' '+xt+' '+(yg0+6)+' V'+yt+'"/>';
+        g+='<path class="punta" d="M'+xt+' '+(yt+6)+' l-4 -7 h8 z"/>'; return;
+      }
       if(n.b>p.b){ /* cambia de banda: sale a la derecha, baja por el pasillo entre bandas y entra por la izquierda */
         var k=cruces[n.b]=(cruces[n.b]||0)+1, yg=bandaY[n.b]-BG/2+(k-1)*7-4, xa=x1+(CX-W)/2-4*(k-1), xb=X(n)-BL+4+6*(k-1);
         g+='<path class="arista" d="M'+x1+' '+y1+' H'+(xa-6)+' Q'+xa+' '+y1+' '+xa+' '+(y1+6)+' V'+(yg-6)+' Q'+xa+' '+yg+' '+(xa-6)+' '+yg+
