@@ -1057,12 +1057,16 @@ document.querySelectorAll('section.curso').forEach(function(sec){
 });
 </script>
 <script>
-/* Mapa de ruta: se arma solo a partir de data-antes de cada tarjeta */
+/* Mapa de ruta: se arma solo a partir de data-antes de cada tarjeta.
+   Si las columnas no caben a tamaño real, el mapa se parte en bandas (como un renglón que sigue abajo)
+   en lugar de encogerse: así las letras y las cajas conservan el mismo tamaño en todos los cursos. */
 (function(){
-  var NS='http://www.w3.org/2000/svg', W=116, H=36, CX=134, CY=50, M=8;
+  var NS='http://www.w3.org/2000/svg', W=116, H=36, CX=134, CY=50, M=8, BG=34, BL=26;
   function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-  document.querySelectorAll('section.curso').forEach(function(sec){
+  function dibujar(sec){
     var lienzo=sec.querySelector('.ruta-lienzo'); if(!lienzo) return;
+    var disp=(sec.querySelector('.ruta')||lienzo).clientWidth||960;
+    var maxC=Math.max(2,Math.floor((disp-2*M-BL+(CX-W))/CX));
     var nodos=[].slice.call(sec.querySelectorAll('article.taller[data-corto]')).map(function(a,k){
       return {id:a.id.slice(2),txt:a.getAttribute('data-corto'),antes:(a.getAttribute('data-antes')||'').split(' ').filter(Boolean),
               tipo:a.classList.contains('aplicada')?'aplicada':a.classList.contains('repaso')?'repaso':'',orden:k};});
@@ -1070,27 +1074,41 @@ document.querySelectorAll('section.curso').forEach(function(sec){
     function nivel(n){ if(n.niv!=null) return n.niv; var m=-1; n.antes.forEach(function(p){ if(por[p]) m=Math.max(m,nivel(por[p])); }); return n.niv=m+1; }
     nodos.forEach(nivel);
     var cols=[]; nodos.forEach(function(n){(cols[n.niv]=cols[n.niv]||[]).push(n)});
-    var filas=0;
     cols.forEach(function(c,i){
       c.forEach(function(n){ var ps=n.antes.filter(function(p){return por[p]}).map(function(p){return por[p].fila});
         n.bari=ps.length?ps.reduce(function(a,b){return a+b},0)/ps.length:0; });
       c.sort(function(a,b){return a.bari-b.bari||a.orden-b.orden});
-      var prev=-1; c.forEach(function(n){ n.fila=Math.max(prev+1,Math.round(n.bari-(c.length-1)/2*(i?0:1))); prev=n.fila; filas=Math.max(filas,n.fila+1); });
+      var prev=-1; c.forEach(function(n){ n.fila=Math.max(prev+1,Math.round(n.bari-(c.length-1)/2*(i?0:1))); prev=n.fila; });
     });
-    var ancho=cols.length*CX-(CX-W)+2*M, alto=filas*CY-(CY-H)+2*M, g='';
-    function X(n){return M+n.niv*CX} function Y(n){return M+n.fila*CY}
+    /* bandas: columnas 0..maxC−1, maxC..2maxC−1, … ; cada banda reinicia sus filas */
+    var nb=Math.ceil(cols.length/maxC), fmin=[], fmax=[], bandaY=[];
+    nodos.forEach(function(n){ n.b=Math.floor(n.niv/maxC); n.col=n.niv%maxC;
+      fmin[n.b]=Math.min(fmin[n.b]==null?1e9:fmin[n.b],n.fila); fmax[n.b]=Math.max(fmax[n.b]==null?-1:fmax[n.b],n.fila); });
+    var y=M; for(var k=0;k<nb;k++){ bandaY[k]=y; y+=(fmax[k]-fmin[k])*CY+H+BG; }
+    var alto=y-BG+M, ncol=Math.min(cols.length,maxC), ancho=ncol*CX-(CX-W)+2*M+(nb>1?BL+10:0), g='';
+    function X(n){return M+(n.b?BL:0)+n.col*CX} function Y(n){return bandaY[n.b]+(n.fila-fmin[n.b])*CY}
+    var cruces={};
     nodos.forEach(function(n){ n.antes.forEach(function(p){ p=por[p]; if(!p) return;
       var x1=X(p)+W, y1=Y(p)+H/2, x2=X(n)-6, y2=Y(n)+H/2, d=(CX-W)/2+4;
-      if(n.niv-p.niv>1){ /* salta columnas: va por el pasillo entre filas para no pasar por detrás de otra tarjeta */
-        var yp=p.fila>n.fila?Y(n)+H+(CY-H)/2:Y(n)-(CY-H)/2, xa=x1+(CX-W)/2, xb=X(n)-(CX-W)/2-6;
-        g+='<path class="arista" d="M'+x1+' '+y1+' C'+(xa+6)+' '+y1+' '+(xa-6)+' '+yp+' '+(xa+12)+' '+yp+' L'+(xb-12)+' '+yp+' C'+(xb+6)+' '+yp+' '+(xb-6)+' '+y2+' '+x2+' '+y2+'"/>';
+      if(n.b>p.b){ /* cambia de banda: sale a la derecha, baja por el pasillo entre bandas y entra por la izquierda */
+        var k=cruces[n.b]=(cruces[n.b]||0)+1, yg=bandaY[n.b]-BG/2+(k-1)*7-4, xa=x1+(CX-W)/2-4*(k-1), xb=X(n)-BL+4+6*(k-1);
+        g+='<path class="arista" d="M'+x1+' '+y1+' H'+(xa-6)+' Q'+xa+' '+y1+' '+xa+' '+(y1+6)+' V'+(yg-6)+' Q'+xa+' '+yg+' '+(xa-6)+' '+yg+
+           ' H'+(xb+6)+' Q'+xb+' '+yg+' '+xb+' '+(yg+6)+' V'+(y2-6)+' Q'+xb+' '+y2+' '+(xb+6)+' '+y2+' H'+x2+'"/>';
+      } else if(n.col-p.col>1){ /* salta columnas: va por el pasillo entre filas para no pasar por detrás de otra tarjeta */
+        var yp=p.fila>n.fila?Y(n)+H+(CY-H)/2:Y(n)-(CY-H)/2, xa2=x1+(CX-W)/2, xb2=X(n)-(CX-W)/2-6;
+        g+='<path class="arista" d="M'+x1+' '+y1+' C'+(xa2+6)+' '+y1+' '+(xa2-6)+' '+yp+' '+(xa2+12)+' '+yp+' L'+(xb2-12)+' '+yp+' C'+(xb2+6)+' '+yp+' '+(xb2-6)+' '+y2+' '+x2+' '+y2+'"/>';
       } else g+='<path class="arista" d="M'+x1+' '+y1+' C'+(x1+d)+' '+y1+' '+(x2-d)+' '+y2+' '+x2+' '+y2+'"/>';
       g+='<path class="punta" d="M'+(x2+6)+' '+y2+' l-7 -4 v8 z"/>'; }); });
     nodos.forEach(function(n){
       g+='<a class="nodo '+n.tipo+(n.niv?'':' raiz')+'" href="#t-'+n.id+'"><title>'+esc(n.txt)+'</title><rect x="'+X(n)+'" y="'+Y(n)+'" width="'+W+'" height="'+H+'" rx="8"/>'+
          '<text x="'+(X(n)+W/2)+'" y="'+(Y(n)+H/2+5)+'" text-anchor="middle">'+esc(n.txt)+'</text></a>';});
     lienzo.innerHTML='<svg xmlns="'+NS+'" viewBox="0 0 '+ancho+' '+alto+'" width="'+ancho+'" height="'+alto+'" role="img" aria-label="Mapa de ruta de '+esc(sec.querySelector('h2').textContent)+'">'+g+'</svg>';
-  });
+    sec._maxC=maxC;
+  }
+  var secs=document.querySelectorAll('section.curso');
+  secs.forEach(dibujar);
+  var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(function(){
+    secs.forEach(function(s){ var d=(s.querySelector('.ruta')||{}).clientWidth||960; if(Math.max(2,Math.floor((d-2*M-BL+(CX-W))/CX))!==s._maxC) dibujar(s); }); },150); });
 })();
 </script>
 </body>
