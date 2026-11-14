@@ -1086,7 +1086,7 @@ document.querySelectorAll('section.curso').forEach(function(sec){
   function dibujar(sec){
     var lienzo=sec.querySelector('.ruta-lienzo'); if(!lienzo) return;
     var disp=(sec.querySelector('.ruta')||lienzo).clientWidth||960;
-    var maxC=Math.max(2,Math.floor((disp-2*M-BL+(CX-W))/CX));
+    var maxC=Math.max(2,Math.floor((disp-2*M-28+(CX-W))/CX));
     var nodos=[].slice.call(sec.querySelectorAll('article.taller[data-corto]')).map(function(a,k){
       return {id:a.id.slice(2),txt:a.getAttribute('data-corto'),antes:(a.getAttribute('data-antes')||'').split(' ').filter(Boolean),
               tipo:a.classList.contains('aplicada')?'aplicada':a.classList.contains('repaso')?'repaso':'',orden:k};});
@@ -1100,31 +1100,31 @@ document.querySelectorAll('section.curso').forEach(function(sec){
       c.sort(function(a,b){return a.bari-b.bari||a.orden-b.orden});
       var prev=-1; c.forEach(function(n){ n.fila=Math.max(prev+1,Math.round(n.bari-(c.length-1)/2*(i?0:1))); prev=n.fila; });
     });
-    /* bandas: columnas 0..maxC−1, maxC..2maxC−1, … ; cada banda reinicia sus filas */
-    var nb=Math.ceil(cols.length/maxC), fmin=[], fmax=[], bandaY=[];
-    nodos.forEach(function(n){ n.b=Math.floor(n.niv/maxC); n.col=n.niv%maxC;
+    /* bandas en serpentina: la banda 0 va de izquierda a derecha, la 1 de derecha a izquierda, la 2 otra vez a la derecha…
+       así el paso de una banda a la siguiente es un tramo vertical corto en el mismo borde, sin cruzar todo el ancho */
+    var nb=Math.ceil(cols.length/maxC), fmin=[], fmax=[], bandaY=[], SM=nb>1?14:0;
+    nodos.forEach(function(n){ n.b=Math.floor(n.niv/maxC); n.col=n.niv%maxC; n.dir=n.b%2?-1:1;
       fmin[n.b]=Math.min(fmin[n.b]==null?1e9:fmin[n.b],n.fila); fmax[n.b]=Math.max(fmax[n.b]==null?-1:fmax[n.b],n.fila); });
     var y=M; for(var k=0;k<nb;k++){ bandaY[k]=y; y+=(fmax[k]-fmin[k])*CY+H+BG; }
-    var alto=y-BG+M, ncol=Math.min(cols.length,maxC), ancho=ncol*CX-(CX-W)+2*M+(nb>1?BL+10:0), g='';
-    function X(n){return M+(n.b?BL:0)+n.col*CX} function Y(n){return bandaY[n.b]+(n.fila-fmin[n.b])*CY}
+    var alto=y-BG+M, ncol=Math.min(cols.length,maxC), ancho=ncol*CX-(CX-W)+2*M+2*SM, g='', P=(CX-W)/2;
+    function X(n){return M+SM+(n.dir>0?n.col:ncol-1-n.col)*CX} function Y(n){return bandaY[n.b]+(n.fila-fmin[n.b])*CY}
+    function sale(n){return n.dir>0?X(n)+W:X(n)} function entra(n){return n.dir>0?X(n)-6:X(n)+W+6}
+    function punta(n,x,y){return '<path class="punta" d="M'+(x+6*n.dir)+' '+y+' l'+(-7*n.dir)+' -4 v8 z"/>'}
+    function codo(x0,y0,x1,y1){ /* tramo en L con esquina redondeada: vertical y luego horizontal */
+      var sx=x1>x0?1:-1, sy=y1>y0?1:-1, r=Math.min(6,Math.abs(x1-x0),Math.abs(y1-y0));
+      return ' V'+(y1-sy*r)+' Q'+x0+' '+y1+' '+(x0+sx*r)+' '+y1+' H'+x1; }
     var cruces={};
     nodos.forEach(function(n){ n.antes.forEach(function(p){ p=por[p]; if(!p) return;
-      var x1=X(p)+W, y1=Y(p)+H/2, x2=X(n)-6, y2=Y(n)+H/2, d=(CX-W)/2+4;
-      if(n.b>p.b && n.col>0 && n.fila===fmin[n.b]){ /* cambia de banda hacia una tarjeta de la primera fila: entra por arriba, sin cruzar otras flechas */
-        var k0=cruces[n.b]=(cruces[n.b]||0)+1, yg0=bandaY[n.b]-BG/2+(k0-1)*7-4, xa0=x1+(CX-W)/2-4*(k0-1), xt=X(n)+W/2, yt=Y(n)-6;
-        g+='<path class="arista" d="M'+x1+' '+y1+' H'+(xa0-6)+' Q'+xa0+' '+y1+' '+xa0+' '+(y1+6)+' V'+(yg0-6)+' Q'+xa0+' '+yg0+' '+(xa0+(xt>xa0?6:-6))+' '+yg0+
-           ' H'+(xt+(xt>xa0?-6:6))+' Q'+xt+' '+yg0+' '+xt+' '+(yg0+6)+' V'+yt+'"/>';
-        g+='<path class="punta" d="M'+xt+' '+(yt+6)+' l-4 -7 h8 z"/>'; return;
-      }
-      if(n.b>p.b){ /* cambia de banda: sale a la derecha, baja por el pasillo entre bandas y entra por la izquierda */
-        var k=cruces[n.b]=(cruces[n.b]||0)+1, yg=bandaY[n.b]-BG/2+(k-1)*7-4, xa=x1+(CX-W)/2-4*(k-1), xb=X(n)-BL+4+6*(k-1);
-        g+='<path class="arista" d="M'+x1+' '+y1+' H'+(xa-6)+' Q'+xa+' '+y1+' '+xa+' '+(y1+6)+' V'+(yg-6)+' Q'+xa+' '+yg+' '+(xa-6)+' '+yg+
-           ' H'+(xb+6)+' Q'+xb+' '+yg+' '+xb+' '+(yg+6)+' V'+(y2-6)+' Q'+xb+' '+y2+' '+(xb+6)+' '+y2+' H'+x2+'"/>';
-      } else if(n.col-p.col>1){ /* salta columnas: va por el pasillo entre filas para no pasar por detrás de otra tarjeta */
-        var yp=p.fila>n.fila?Y(n)+H+(CY-H)/2:Y(n)-(CY-H)/2, xa2=x1+(CX-W)/2, xb2=X(n)-(CX-W)/2-6;
-        g+='<path class="arista" d="M'+x1+' '+y1+' C'+(xa2+6)+' '+y1+' '+(xa2-6)+' '+yp+' '+(xa2+12)+' '+yp+' L'+(xb2-12)+' '+yp+' C'+(xb2+6)+' '+yp+' '+(xb2-6)+' '+y2+' '+x2+' '+y2+'"/>';
-      } else g+='<path class="arista" d="M'+x1+' '+y1+' C'+(x1+d)+' '+y1+' '+(x2-d)+' '+y2+' '+x2+' '+y2+'"/>';
-      g+='<path class="punta" d="M'+(x2+6)+' '+y2+' l-7 -4 v8 z"/>'; }); });
+      var x1=sale(p), y1=Y(p)+H/2, x2=entra(n), y2=Y(n)+H/2;
+      if(n.b>p.b){ /* cambia de banda: sale por su lado, baja por el pasillo entre columnas y entra por el lado de llegada */
+        var k=cruces[n.b]=(cruces[n.b]||0)+1, yg=bandaY[n.b]-BG/2+(k-1)*6-3,
+            xa=x1+p.dir*(P-2*(k-1)), xb=n.dir>0?X(n)-P+2*(k-1):X(n)+W+P-2*(k-1);
+        g+='<path class="arista" d="M'+x1+' '+y1+' H'+xa+codo(xa,y1,xb,yg)+codo(xb,yg,x2,y2)+'"/>';
+      } else if(Math.abs(n.col-p.col)>1){ /* salta columnas: va por el pasillo entre filas */
+        var yp=p.fila>n.fila?Y(n)+H+(CY-H)/2:Y(n)-(CY-H)/2, xa2=x1+p.dir*P, xb2=x2-n.dir*(P-6);
+        g+='<path class="arista" d="M'+x1+' '+y1+' H'+xa2+codo(xa2,y1,xb2,yp)+codo(xb2,yp,x2,y2)+'"/>';
+      } else { var d=p.dir*(P+4); g+='<path class="arista" d="M'+x1+' '+y1+' C'+(x1+d)+' '+y1+' '+(x2-d)+' '+y2+' '+x2+' '+y2+'"/>'; }
+      g+=punta(n,x2,y2); }); });
     nodos.forEach(function(n){
       g+='<a class="nodo '+n.tipo+(n.niv?'':' raiz')+'" href="#t-'+n.id+'"><title>'+esc(n.txt)+'</title><rect x="'+X(n)+'" y="'+Y(n)+'" width="'+W+'" height="'+H+'" rx="8"/>'+
          '<text x="'+(X(n)+W/2)+'" y="'+(Y(n)+H/2+5)+'" text-anchor="middle">'+esc(n.txt)+'</text></a>';});
@@ -1134,7 +1134,7 @@ document.querySelectorAll('section.curso').forEach(function(sec){
   var secs=document.querySelectorAll('section.curso');
   secs.forEach(dibujar);
   var t; window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(function(){
-    secs.forEach(function(s){ var d=(s.querySelector('.ruta')||{}).clientWidth||960; if(Math.max(2,Math.floor((d-2*M-BL+(CX-W))/CX))!==s._maxC) dibujar(s); }); },150); });
+    secs.forEach(function(s){ var d=(s.querySelector('.ruta')||{}).clientWidth||960; if(Math.max(2,Math.floor((d-2*M-28+(CX-W))/CX))!==s._maxC) dibujar(s); }); },150); });
 })();
 </script>
 </body>
